@@ -10,7 +10,7 @@ class UserBuildsController extends Controller
     function index()
     {
         $builds = Auth::user()->builds;
-        return view('', compact('builds'));
+        return view('builds.index', compact('builds'));
     }
 
     function store()

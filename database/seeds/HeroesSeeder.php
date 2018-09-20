@@ -14,7 +14,7 @@ class HeroesSeeder extends Seeder
      */
     public function run()
     {
-        $response = file_get_contents('https://hotsapi.net/api/v1/heroes');
+        $response = file_get_contents('http://hotsapi.net/api/v1/heroes');
 
         $heroes = json_decode($response, true);
 

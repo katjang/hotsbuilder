@@ -12,7 +12,7 @@ class MapsSeeder extends Seeder
      */
     public function run()
     {
-        $response = file_get_contents('https://hotsapi.net/api/v1/maps');
+        $response = file_get_contents('http://hotsapi.net/api/v1/maps');
 
         $maps = json_decode($response, true);
 

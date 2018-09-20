@@ -10483,6 +10483,7 @@ a.text-dark:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: white;
 }
 
 #app {
