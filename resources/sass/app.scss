@@ -12,3 +12,18 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+.main{
+  background: url(/img/background.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  flex: 1;
+}
+
+#app{
+  min-height: 100vh;
+}
+
+.hero{
+  margin: 10px;
+  flex: 1;
+}

@@ -17,4 +17,9 @@ class Hero extends Model
     {
         return $this->hasMany(Talent::class);
     }
+
+    public function builds()
+    {
+        return $this->hasMany(Build::class);
+    }
 }
