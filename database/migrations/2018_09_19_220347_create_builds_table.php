@@ -17,6 +17,7 @@ class CreateBuildsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('hero_id');
+            $table->text('title');
             $table->text('description')->nullable();
             $table->timestamps();
         });

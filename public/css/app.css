@@ -10497,3 +10497,46 @@ a.text-dark:focus {
           flex: 1;
 }
 
+.tooltip-description {
+  visibility: hidden;
+  position: absolute;
+  padding: 5px;
+  background: black;
+  border: 3px solid #0000F0;
+  top: 100%;
+  left: 100%;
+  z-index: 100;
+  width: 200px;
+}
+
+.talent {
+  margin: 5px;
+  border: 3px solid #0000F0;
+  position: relative;
+}
+
+.talent.selected {
+  border-color: yellow;
+}
+
+.ability {
+  width: 64px;
+  height: 64px;
+  margin: 5px;
+  padding: 3px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.visible {
+  visibility: visible;
+}
+

@@ -20,7 +20,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/heroes', 'HeroesController@index')->name('heroes');
 Route::get('/heroes/{hero}', 'BuildsController@index')->name('hero.builds');
 
-Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('build.create');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('build.create');
+});
+
 
 Route::get('/builds', 'UserBuildsController@index')->name('builds');
 Route::post('/builds', 'UserBuildsController@store')->name('build.store');

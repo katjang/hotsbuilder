@@ -29,3 +29,40 @@
   margin: 10px;
   flex: 1;
 }
+
+.tooltip-description{
+  visibility: hidden;
+  position: absolute;
+  padding: 5px;
+  background: black;
+  border: 3px solid #0000F0;
+  top: 100%;
+  left: 100%;
+  z-index: 100;
+  width: 200px;
+}
+
+.talent{
+  margin: 5px;
+  border: 3px solid #0000F0;
+  &.selected{
+    border-color: yellow;
+  }
+  position: relative;
+}
+
+.ability{
+  width: 64px;
+  height: 64px;
+  margin: 5px;
+  padding: 3px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visible{
+  visibility: visible;
+}
