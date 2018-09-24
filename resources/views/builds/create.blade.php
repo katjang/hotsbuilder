@@ -2,16 +2,10 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex">
-            @foreach($hero->abilities as $ability)
-                <div class="ability">
-                    <h3>{{$ability->name}}</h3>
-                </div>
-            @endforeach
-        </div>
+        @include('partials._heroDetail', compact('hero'))
         <form action="{{route('build.store')}}" method="POST">
-            <input type="hidden" name="hero_id" value="{{$hero->id}}">
             @csrf
+            <input type="hidden" name="hero_id" value="{{$hero->id}}">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" name="title" class="form-control">
@@ -24,18 +18,11 @@
                 @foreach($hero->talents as $level => $talents)
                     <div class="col-6">
                         <div>
-                            <h3>Talent at level {{$level}}:</h3>
+                            <h3>Level {{$level}}:</h3>
                         </div>
                         <div class="d-flex">
                             @foreach($talents as $talent)
-                                <div class="talent" data-id="{{$talent->id}}">
-                                    <img src="{{$talent->image}}" alt="{{$talent->name}}">
-                                    <div class="tooltip-description">
-                                        <p>
-                                            {{$talent->description}}
-                                        </p>
-                                    </div>
-                                </div>
+                                @include('partials/_talent', compact('talent'))
                             @endforeach
                             <input type="hidden" name="talent_{{$loop->iteration}}">
                         </div>
