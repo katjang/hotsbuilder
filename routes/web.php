@@ -20,12 +20,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/heroes', 'HeroesController@index')->name('heroes');
 Route::get('/heroes/{hero}', 'BuildsController@index')->name('hero.builds');
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function()
+{
     Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('build.create');
+    Route::post('/builds', 'UserBuildsController@store')->name('build.store');
+
+    Route::post('/builds/{builds}/favorite', 'UserFavoritesController@store')->name('favorite.store');
+    Route::delete('/builds/{builds}/favorite', 'UserFavoritesController@delete')->name('favorite.delete');
 });
 
 
 Route::get('/builds', 'UserBuildsController@index')->name('builds');
-Route::post('/builds', 'UserBuildsController@store')->name('build.store');
 Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('build.delete');
 Route::put('/builds/{build}', 'UserBuildsController@update')->name('build.update');

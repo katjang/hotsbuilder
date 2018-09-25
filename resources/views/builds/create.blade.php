@@ -20,17 +20,20 @@
                         <div>
                             <h3>Level {{$level}}:</h3>
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex form-group">
                             @foreach($talents as $talent)
                                 @include('partials/_talent', compact('talent'))
                             @endforeach
-                            <input type="hidden" name="talent_{{$loop->iteration}}">
+                            <input type="hidden" name="talent_{{$loop->iteration}}" class="form-control {{$errors->has('talent_'.$loop->iteration)?'is-invalid' : ''}}">
+
+                            <div class="invalid-feedback">{{ $errors->first('talent_'.$loop->iteration) }}</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="note_{{$loop->iteration}}">Note</label>
                             <textarea type="text" name="note_{{$loop->iteration}}" class="form-control"></textarea>
+
                         </div>
                     </div>
                 @endforeach

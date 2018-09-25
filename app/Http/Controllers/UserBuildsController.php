@@ -49,7 +49,8 @@ class UserBuildsController extends Controller
 
     function delete(Build $build)
     {
-
+        $build->delete();
+        return redirect()->route('builds')->with('status', "Build has been deleted");
     }
 
     function update(Build $build)

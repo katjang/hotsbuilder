@@ -34,6 +34,21 @@ body{
   flex: 1;
 }
 
+.game-border{
+  background: linear-gradient(#14324A,#43286b);
+  &:hover{
+    -webkit-transition:background 1s linear;
+    -moz-transition:background 1s linear;
+    -o-transition:background 1s linear;
+    transition:background 1s linear;
+
+    background: linear-gradient($highlight,darken($highlight, 20%));
+  }
+  & > div{
+    background-color: $dark;
+  }
+}
+
 .tooltip-description{
   visibility: hidden;
   position: absolute;
@@ -46,12 +61,22 @@ body{
   width: 200px;
 }
 
+.build-list{
+  padding: 5px;
+  margin-top: 15px;
+
+  @extend .game-border;
+
+  box-shadow: 0 0 1rem #000;
+}
+
 .talent{
   margin: 5px;
-  border: 3px solid #0000F0;
+  background-color: $dark;
+  padding: 3px;
   cursor: pointer;
   &.selected{
-    border-color: yellow;
+    background: linear-gradient(#dfeeff,#75c3ff);
   }
   position: relative;
 }
