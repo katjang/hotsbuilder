@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Build extends Model
 {
-    protected $guarded = ['user_id'];
+    protected $guarded = ['user_id', 'hero_id'];
 
     function user()
     {

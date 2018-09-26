@@ -32,6 +32,7 @@ class UserBuildsController extends Controller
         $build = new Build;
         $build->fill(array_only($request->all(), ['title', 'description', 'hero_id']));
         $build->user_id = Auth::id();
+        $build->hero_id = $request->hero_id;
 
         $build->save();
         $build->talents()->sync([

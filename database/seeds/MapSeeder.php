@@ -3,7 +3,7 @@
 use App\Map;
 use Illuminate\Database\Seeder;
 
-class MapsSeeder extends Seeder
+class MapSeeder extends Seeder
 {
     /**
      * Run the database seeds.

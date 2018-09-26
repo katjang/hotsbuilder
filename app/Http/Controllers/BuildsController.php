@@ -16,7 +16,8 @@ class BuildsController extends Controller
 
     function create(Hero $hero)
     {
-        $hero->talents = $hero->talents()->orderBy('level')->get()->groupBy('level');
+        $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
+//        $hero->talents = $hero->talents()->orderBy('level')->orderBy('sort')->get()->groupBy('level');
         $hero->abilities;
         return view('hero.build.create', compact('hero'));
     }

@@ -7,7 +7,7 @@
             <div>
                 <div class="d-flex">
                     @foreach($build->talents as $talent)
-                        @include('partials/_talent', compact('talent'))
+                        @include('partials/_talentCompact', compact('talent'))
                     @endforeach
                 </div>
             </div>
