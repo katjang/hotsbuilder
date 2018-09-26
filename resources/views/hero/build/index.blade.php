@@ -6,7 +6,7 @@
             @include('partials._heroDetail', compact('hero'))
         </div>
         <div>
-            <a href="{{route('build.create', compact('hero'))}}" class="btn btn-success">Create new build</a>
+            <a href="{{route('user.build.create', compact('hero'))}}" class="btn btn-success">Create new build</a>
         </div>
         <div>
             @include('partials._buildList', ['builds' => $builds])

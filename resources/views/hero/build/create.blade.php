@@ -22,7 +22,7 @@
                         </div>
                         <div class="d-flex form-group">
                             @foreach($talents as $talent)
-                                @include('partials/_talent', compact('talent'))
+                                @include('partials._talent', compact('talent'))
                             @endforeach
                             <input type="hidden" name="talent_{{$loop->iteration}}" class="form-control {{$errors->has('talent_'.$loop->iteration)?'is-invalid' : ''}}">
 

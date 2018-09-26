@@ -22,14 +22,13 @@ Route::get('/heroes/{hero}', 'BuildsController@index')->name('hero.builds');
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('build.create');
-    Route::post('/builds', 'UserBuildsController@store')->name('build.store');
+    Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('user.build.create');
+    Route::get('/builds', 'UserBuildsController@index')->name('user.builds');
+    Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update');
+    Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');
+    Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete');
 
-    Route::post('/builds/{builds}/favorite', 'UserFavoritesController@store')->name('favorite.store');
-    Route::delete('/builds/{builds}/favorite', 'UserFavoritesController@delete')->name('favorite.delete');
+    Route::get('/favorites', 'UserFavoritesController@index')->name('user.favorites');
+    Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
+    Route::delete('/builds/{build}/favorite', 'UserFavoritesController@delete')->name('user.favorite.delete');
 });
-
-
-Route::get('/builds', 'UserBuildsController@index')->name('builds');
-Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('build.delete');
-Route::put('/builds/{build}', 'UserBuildsController@update')->name('build.update');

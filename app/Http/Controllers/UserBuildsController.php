@@ -12,7 +12,7 @@ class UserBuildsController extends Controller
     function index()
     {
         $builds = Auth::user()->builds()->with('hero')->get();
-        return view('builds.index', compact('builds'));
+        return view('user.builds', compact('builds'));
     }
 
     function store(Request $request)
@@ -44,13 +44,13 @@ class UserBuildsController extends Controller
             $request->talent_7
         ]);
 
-        return redirect('builds')->with('status', 'Build has been submitted');
+        return redirect('user.builds')->with('status', 'Build has been submitted');
     }
 
     function delete(Build $build)
     {
         $build->delete();
-        return redirect()->route('builds')->with('status', "Build has been deleted");
+        return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }
 
     function update(Build $build)

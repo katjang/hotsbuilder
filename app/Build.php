@@ -13,6 +13,11 @@ class Build extends Model
         return $this->belongsTo(User::class);
     }
 
+    function users()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
     function hero()
     {
         return $this->belongsTo(Hero::class);

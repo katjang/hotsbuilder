@@ -28,7 +28,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    function builds(){
+    function builds()
+    {
         return $this->hasMany(Build::class);
+    }
+
+    function favorites()
+    {
+        return $this->belongsToMany(Build::class, 'favorites');
     }
 }

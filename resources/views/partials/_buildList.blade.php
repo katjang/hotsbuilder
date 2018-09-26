@@ -13,7 +13,8 @@
             </div>
             @auth
             <div>
-                <form action="{{route('favorite.store', ['build' => $build])}}" method="POST">
+                <form action="{{route('user.favorite.store', ['build' => $build])}}" method="POST">
+                    @csrf
                     <input class="btn btn-success" type="submit" value="Add to favorites">
                 </form>
             </div>
