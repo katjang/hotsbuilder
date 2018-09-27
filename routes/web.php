@@ -20,6 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/heroes', 'HeroesController@index')->name('heroes');
 Route::get('/heroes/{hero}', 'BuildsController@index')->name('hero.builds');
 
+Route::get('/maps', 'MapsController@index')->name('maps');
+
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('user.build.create');

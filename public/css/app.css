@@ -10493,6 +10493,11 @@ body {
   overflow-x: hidden;
 }
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 #app {
   min-height: 100vh;
 }
@@ -10506,7 +10511,8 @@ body {
 
 .game-border,
 .build-list,
-.talent {
+.talent,
+.map {
   background: -webkit-gradient(linear, left top, left bottom, from(#14324A), to(#43286b));
   background: linear-gradient(#14324A, #43286b);
   padding: 3px;
@@ -10514,7 +10520,8 @@ body {
 
 .game-border:hover,
 .build-list:hover,
-.talent:hover {
+.talent:hover,
+.map:hover {
   -webkit-transition: background 1s linear;
   transition: background 1s linear;
   background: -webkit-gradient(linear, left top, left bottom, from(#84ECFF), to(#1edcff));
@@ -10523,26 +10530,17 @@ body {
 
 .game-border:hover > div:not(.content),
 .build-list:hover > div:not(.content),
-.talent:hover > div:not(.content) {
+.talent:hover > div:not(.content),
+.map:hover > div:not(.content) {
   color: #1A1043;
 }
 
 .game-border > .content,
 .build-list > .content,
-.talent > .content {
+.talent > .content,
+.map > .content {
   background-color: #1A1043;
   height: 100%;
-}
-
-.tooltip-description {
-  visibility: hidden;
-  position: absolute;
-  padding: 5px;
-  background: #1A1043;
-  top: 120%;
-  left: 0;
-  z-index: 100;
-  width: 200px;
 }
 
 .build-list {
@@ -10554,7 +10552,7 @@ body {
 }
 
 .talent {
-  margin: 5px;
+  margin: 3px;
   cursor: pointer;
   position: relative;
 }
@@ -10562,6 +10560,26 @@ body {
 .talent.selected {
   background: -webkit-gradient(linear, left top, left bottom, from(#dfeeff), to(#75c3ff));
   background: linear-gradient(#dfeeff, #75c3ff);
+}
+
+.talent .tooltip-description {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  background: #1A1043;
+  top: 120%;
+  left: 0;
+  z-index: 100;
+  width: 200px;
+}
+
+.talent:hover .tooltip-description {
+  display: block;
+}
+
+.map {
+  margin: 10px;
+  width: 400px;
 }
 
 .ability {
@@ -10579,9 +10597,5 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.visible {
-  visibility: visible;
 }
 

@@ -13700,14 +13700,6 @@ __webpack_require__(12);
 
 window.addEventListener('load', init);
 
-function init() {
-    $('.talent').on('mouseenter mouseleave', toggleTooltip);
-}
-
-function toggleTooltip(e) {
-    $('.tooltip-description', this).toggleClass('visible');
-}
-
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {

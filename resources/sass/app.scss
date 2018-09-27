@@ -27,6 +27,11 @@ body{
   overflow-x: hidden;
 }
 
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
 #app{
   min-height: 100vh;
 }
@@ -56,16 +61,7 @@ body{
   }
 }
 
-.tooltip-description{
-  visibility: hidden;
-  position: absolute;
-  padding: 5px;
-  background: $dark;
-  top: 120%;
-  left: 0;
-  z-index: 100;
-  width: 200px;
-}
+
 
 .build-list{
   padding: 5px;
@@ -77,13 +73,34 @@ body{
 }
 
 .talent{
-  margin: 5px;
   @extend .game-border;
+  margin: 3px;
   cursor: pointer;
   &.selected{
     background: linear-gradient(#dfeeff,#75c3ff);
   }
+  .tooltip-description{
+    display: none;
+    position: absolute;
+    padding: 5px;
+    background: $dark;
+    top: 120%;
+    left: 0;
+    z-index: 100;
+    width: 200px;
+  }
+  &:hover{
+    .tooltip-description{
+      display: block;
+    }
+  }
   position: relative;
+}
+
+.map{
+  @extend .game-border;
+  margin: 10px;
+  width: 400px;
 }
 
 .ability{
@@ -96,8 +113,4 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.visible{
-  visibility: visible;
 }

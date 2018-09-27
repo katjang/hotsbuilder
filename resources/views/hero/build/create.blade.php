@@ -20,7 +20,7 @@
                         <div>
                             <h3>Level {{$level}}:</h3>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group d-flex flex-column">
                             @foreach($talents as $talent)
                                 <div class="talent" data-id="{{$talent->id}}">
                                     <div class="content">
