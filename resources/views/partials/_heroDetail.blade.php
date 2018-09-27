@@ -6,9 +6,9 @@
             <h3>{{$hero->type}} {{$hero->role}}</h3>
         </div>
     </div>
-    <div>
+    <div class="d-flex flex-wrap">
         @foreach($hero->abilities as $ability)
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center col-6">
                 <div class="ability flex-shrink-0">
                     <span>{{$ability->name}}</span>
                 </div>

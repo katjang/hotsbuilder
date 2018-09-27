@@ -23,7 +23,7 @@
                         <div class="form-group">
                             @foreach($talents as $talent)
                                 <div class="talent" data-id="{{$talent->id}}">
-                                    <div>
+                                    <div class="content">
                                         <div class="d-flex">
                                             <h4><img class="d-inline-block" src="{{$talent->image}}" alt="{{$talent->name}}"> {{$talent->name}} {{$talent->sort}}</h4>
                                         </div>

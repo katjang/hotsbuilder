@@ -11,7 +11,7 @@ class UserBuildsController extends Controller
 {
     function index()
     {
-        $builds = Auth::user()->builds()->with('hero')->get();
+        $builds = Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get();
         return view('user.builds', compact('builds'));
     }
 
@@ -45,7 +45,7 @@ class UserBuildsController extends Controller
             $request->talent_7
         ]);
 
-        return redirect('user.builds')->with('status', 'Build has been submitted');
+        return redirect()->route('user.builds')->with('status', 'Build has been submitted');
     }
 
     function delete(Build $build)

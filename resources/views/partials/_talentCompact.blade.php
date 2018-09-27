@@ -1,5 +1,5 @@
 <div class="talent" data-id="{{$talent->id}}">
-    <div>
+    <div class="content">
         <img src="{{$talent->image}}" alt="{{$talent->name}}">
         <div class="tooltip-description">
             <h4>{{$talent->name}}</h4>

@@ -10,7 +10,7 @@ class BuildsController extends Controller
 {
     function index(Hero $hero)
     {
-        $builds = $hero->builds()->with('hero')->get();
+        $builds = $hero->builds()->with('hero', 'user')->get();
         return view('hero.build.index', compact('hero', 'builds'));
     }
 
