@@ -5,6 +5,8 @@
 // Variables
 @import 'variables';
 
+// Google icons
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -28,8 +30,48 @@ body{
 }
 
 img{
-  max-width: 100%;
-  max-height: 100%;
+
+}
+
+.button-icon{
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  min-width: 0;
+  padding: 0;
+  flex-shrink: 0;
+  outline: none;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  border-width: 0;
+  margin: 0 10px;
+  width: 56px;
+  height: 56px;
+  font-size: 36px;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+
+  &-small{
+    @extend .button-icon;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+.favorite{
+  background-color: $purple;
 }
 
 #app{
@@ -44,20 +86,39 @@ img{
 .game-border{
   background: linear-gradient(#14324A,#43286b);
   padding: 3px;
+  position: relative;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
   &:hover{
-    -webkit-transition:background 1s linear;
-    -moz-transition:background 1s linear;
-    -o-transition:background 1s linear;
-    transition:background 1s linear;
-
-    background: linear-gradient($highlight,darken($highlight, 20%));
     & > div:not(.content){
       color: $dark;
+    }
+    &:before{
+      opacity: 1;
     }
   }
   & > .content{
     background-color: $dark;
     height: 100%;
+    position: relative;
+  }
+  &:before{
+    content: '';
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -ms-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    background: linear-gradient($highlight,darken($highlight, 20%));
   }
 }
 
@@ -94,13 +155,16 @@ img{
       display: block;
     }
   }
-  position: relative;
 }
 
 .map{
   @extend .game-border;
   margin: 10px;
   width: 400px;
+
+  h2{
+    color: #6cf;
+  }
 }
 
 .ability{

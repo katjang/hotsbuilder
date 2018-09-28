@@ -13700,6 +13700,8 @@ __webpack_require__(12);
 
 window.addEventListener('load', init);
 
+function init() {}
+
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {

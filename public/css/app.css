@@ -10493,9 +10493,53 @@ body {
   overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+.button-icon,
+.button-icon-small {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  min-width: 0;
+  padding: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  border-width: 0;
+  margin: 0 10px;
+  width: 56px;
+  height: 56px;
+  font-size: 36px;
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.button-icon-small {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+}
+
+.favorite {
+  background-color: #9561e2;
 }
 
 #app {
@@ -10516,16 +10560,9 @@ img {
   background: -webkit-gradient(linear, left top, left bottom, from(#14324A), to(#43286b));
   background: linear-gradient(#14324A, #43286b);
   padding: 3px;
-}
-
-.game-border:hover,
-.build-list:hover,
-.talent:hover,
-.map:hover {
-  -webkit-transition: background 1s linear;
-  transition: background 1s linear;
-  background: -webkit-gradient(linear, left top, left bottom, from(#84ECFF), to(#1edcff));
-  background: linear-gradient(#84ECFF, #1edcff);
+  position: relative;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
 }
 
 .game-border:hover > div:not(.content),
@@ -10535,12 +10572,37 @@ img {
   color: #1A1043;
 }
 
+.game-border:hover:before,
+.build-list:hover:before,
+.talent:hover:before,
+.map:hover:before {
+  opacity: 1;
+}
+
 .game-border > .content,
 .build-list > .content,
 .talent > .content,
 .map > .content {
   background-color: #1A1043;
   height: 100%;
+  position: relative;
+}
+
+.game-border:before,
+.build-list:before,
+.talent:before,
+.map:before {
+  content: '';
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  background: -webkit-gradient(linear, left top, left bottom, from(#84ECFF), to(#1edcff));
+  background: linear-gradient(#84ECFF, #1edcff);
 }
 
 .build-list {
@@ -10554,7 +10616,6 @@ img {
 .talent {
   margin: 3px;
   cursor: pointer;
-  position: relative;
 }
 
 .talent.selected {
@@ -10580,6 +10641,10 @@ img {
 .map {
   margin: 10px;
   width: 400px;
+}
+
+.map h2 {
+  color: #6cf;
 }
 
 .ability {

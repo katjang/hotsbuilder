@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Hero;
+use App\Services\BuildService;
 use App\Talent;
 use Illuminate\Http\Request;
 
 class BuildsController extends Controller
 {
+    function __construct(BuildService $buildService)
+    {
+        $this->buildService = $buildService;
+    }
+
     function index(Hero $hero)
     {
-        $builds = $hero->builds()->with('hero', 'user')->get();
+        $builds = $this->buildService->addFavoritesAttribute($hero->builds()->with('hero', 'user')->get());
         return view('hero.build.index', compact('hero', 'builds'));
     }
 

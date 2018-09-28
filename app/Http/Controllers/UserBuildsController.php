@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Build;
 use App\Hero;
+use App\Services\BuildService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserBuildsController extends Controller
 {
+    function __construct(BuildService $buildService)
+    {
+        $this->buildService = $buildService;
+    }
+
     function index()
     {
-        $builds = Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get();
+        $builds = $this->buildService->addFavoritesAttribute(Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get());
         return view('user.builds', compact('builds'));
     }
 
@@ -31,10 +37,9 @@ class UserBuildsController extends Controller
 
         $build = new Build;
         $build->fill(array_only($request->all(), ['title', 'description', 'hero_id']));
-        $build->user_id = Auth::id();
         $build->hero_id = $request->hero_id;
 
-        $build->save();
+        Auth::user()->builds()->save($build);
         $build->talents()->sync([
             $request->talent_1,
             $request->talent_2,
@@ -54,7 +59,7 @@ class UserBuildsController extends Controller
         return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }
 
-    function update(Build $build)
+    function update(Build $build, Request $request)
     {
 
     }
