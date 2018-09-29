@@ -7,6 +7,9 @@ class BuildService
 {
     public function addFavoritesAttribute($builds)
     {
+        if(!Auth::check()){
+            return $builds;
+        }
         $favorites = Auth::user()->favorites->pluck('id');
 
         foreach($builds as $build){

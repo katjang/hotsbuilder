@@ -10520,6 +10520,7 @@ body {
   padding: 0;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  outline: none;
   border-radius: 50%;
   background-color: black;
   color: white;
@@ -10551,9 +10552,13 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
 
 .game-border,
+.hero,
 .build-list,
 .talent,
 .map {
@@ -10566,6 +10571,7 @@ body {
 }
 
 .game-border:hover > div:not(.content),
+.hero:hover > div:not(.content),
 .build-list:hover > div:not(.content),
 .talent:hover > div:not(.content),
 .map:hover > div:not(.content) {
@@ -10573,6 +10579,7 @@ body {
 }
 
 .game-border:hover:before,
+.hero:hover:before,
 .build-list:hover:before,
 .talent:hover:before,
 .map:hover:before {
@@ -10580,6 +10587,7 @@ body {
 }
 
 .game-border > .content,
+.hero > .content,
 .build-list > .content,
 .talent > .content,
 .map > .content {
@@ -10588,7 +10596,17 @@ body {
   position: relative;
 }
 
+.game-border.selected,
+.selected.hero,
+.selected.build-list,
+.selected.talent,
+.selected.map {
+  background: -webkit-gradient(linear, left top, left bottom, from(#dfeeff), to(#6BC1F9));
+  background: linear-gradient(#dfeeff, #6BC1F9);
+}
+
 .game-border:before,
+.hero:before,
 .build-list:before,
 .talent:before,
 .map:before {
@@ -10601,12 +10619,11 @@ body {
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-  background: -webkit-gradient(linear, left top, left bottom, from(#84ECFF), to(#1edcff));
-  background: linear-gradient(#84ECFF, #1edcff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#84ECFF), to(#2278B7));
+  background: linear-gradient(#84ECFF, #2278B7);
 }
 
 .build-list {
-  padding: 5px;
   margin-top: 15px;
   cursor: pointer;
   -webkit-box-shadow: 0 0 1rem #000;
@@ -10616,11 +10633,6 @@ body {
 .talent {
   margin: 3px;
   cursor: pointer;
-}
-
-.talent.selected {
-  background: -webkit-gradient(linear, left top, left bottom, from(#dfeeff), to(#75c3ff));
-  background: linear-gradient(#dfeeff, #75c3ff);
 }
 
 .talent .tooltip-description {
@@ -10641,6 +10653,13 @@ body {
 .map {
   margin: 10px;
   width: 400px;
+  padding: 5px;
+}
+
+.map img {
+  max-width: 100%;
+  max-height: 100%;
+  margin-bottom: 10px;
 }
 
 .map h2 {

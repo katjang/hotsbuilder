@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex flex-wrap justify-content-center">
+    <div class="d-flex flex-wrap justify-content-between">
         @foreach($heroes as $hero)
             <div class="hero">
-                <a href="{{route('hero.builds', ['hero' => $hero->id])}}">
-                    <img src="{{$hero->image}}" alt="{{$hero->name}}">
-                </a>
+                <div class="content">
+                    <a href="{{route('hero.builds', ['hero' => $hero->id])}}">
+                        <img src="{{$hero->image}}" alt="{{$hero->name}}">
+                    </a>
+                </div>
             </div>
         @endforeach
     </div>
