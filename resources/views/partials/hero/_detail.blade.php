@@ -1,9 +1,11 @@
 <div>
     <div class="d-flex align-items-center">
         <img src="{{$hero->image}}" align="{{$hero->name}}">
-        <div>
-            <h1>{{$hero->name}}</h1>
-            <h3>{{$hero->type}} {{$hero->role}}</h3>
+        <div class="flex-fill">
+            <div class="col-12">
+                <h1>{{$hero->name}}</h1>
+                <h3>{{$hero->type}} {{$hero->role}}</h3>
+            </div>
         </div>
     </div>
     <div class="d-flex flex-wrap">
@@ -18,5 +20,4 @@
             </div>
         @endforeach
     </div>
-
 </div>

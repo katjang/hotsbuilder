@@ -10,6 +10,7 @@ class UserFavoritesController extends Controller
 {
     function index()
     {
+        //do not need to add the favorite attributes because i know they are all favorite.
         $builds = Auth::user()->favorites;
         return view('user.builds', compact('builds'));
     }

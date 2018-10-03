@@ -18,13 +18,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/heroes', 'HeroesController@index')->name('heroes');
-Route::get('/heroes/{hero}', 'BuildsController@index')->name('hero.builds');
+Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
+
+Route::get('/users/{user}', 'UserController@show')->name('user.show');
 
 Route::get('/maps', 'MapsController@index')->name('maps');
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('user.build.create');
+    Route::get('/heroes/{hero}/create', 'BuildsController@create')->name('build.create');
+    Route::get('builds/{build}/edit', "BuildsController@edit")->name('build.edit');
+
     Route::get('/builds', 'UserBuildsController@index')->name('user.builds');
     Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update');
     Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');

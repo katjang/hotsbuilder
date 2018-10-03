@@ -10489,8 +10489,16 @@ a.text-dark:focus {
   color: white;
 }
 
+.main a {
+  color: white;
+}
+
 body {
   overflow-x: hidden;
+}
+
+textarea {
+  height: 100px !important;
 }
 
 .button-icon,

@@ -5,7 +5,7 @@
         @foreach($heroes as $hero)
             <div class="hero">
                 <div class="content">
-                    <a href="{{route('hero.builds', ['hero' => $hero->id])}}">
+                    <a href="{{route('hero.show', ['hero' => $hero->id])}}">
                         <img src="{{$hero->image}}" alt="{{$hero->name}}">
                     </a>
                 </div>
