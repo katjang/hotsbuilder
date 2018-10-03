@@ -41,7 +41,7 @@ img{
 
 }
 
-.button-icon{
+.fab-button{
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
@@ -70,22 +70,65 @@ img{
   font-size: 36px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 
-  &-small{
-    @extend .button-icon;
+  &-mini{
+    @extend .fab-button;
     width: 30px;
     height: 30px;
     font-size: 20px;
   }
+  &.favorite{
+    background-color: $purple;
+  }
+  &.edit{
+    background-color: $orange;
+  }
+  &.delete{
+    background-color: $red;
+  }
 }
 
-.favorite{
-  background-color: $purple;
+.icon-button{
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  background-color: transparent;
+  text-align: center;
+  min-width: 0;
+  padding: 0;
+  flex-shrink: 0;
+  outline: none;
+  border-width: 0;
+  margin: 0 10px;
+  width: 35px;
+  height: 35px;
+
+  &.favorite{
+    color: $purple;
+  }
+  &.edit{
+    color: $purple;
+  }
+  &.delete{
+    color: $purple;
+  }
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 #app{
   min-height: 100vh;
 }
-
 .hero{
   @extend .game-border;
   margin: 10px;

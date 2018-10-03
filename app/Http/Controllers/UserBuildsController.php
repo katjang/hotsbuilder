@@ -18,12 +18,15 @@ class UserBuildsController extends Controller
 
     function index()
     {
+        //TODO HAVE TO Eager load TALENTS INTO BUILDS
         $builds = $this->buildService->addFavoritesAttribute(Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get());
         return view('user.builds', compact('builds'));
     }
 
     function store(SaveBuild $request)
     {
+        //TODO HAVE TO Eager load TALENTS INTO BUILDS
+
         $build = new Build;
         $build->hero_id = $request->hero_id;
         $this->buildService->saveBuild($request, $build, Auth::user());
@@ -32,6 +35,8 @@ class UserBuildsController extends Controller
 
     function delete(Build $build)
     {
+        //TODO HAVE TO Eager load TALENTS INTO BUILDS
+        
         $build->delete();
         return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }

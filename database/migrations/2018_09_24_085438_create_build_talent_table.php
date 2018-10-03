@@ -18,12 +18,14 @@ class CreateBuildTalentTable extends Migration
             $table->unsignedInteger('build_id');
             $table->foreign('build_id')
                 ->references('id')
-                ->on('builds');
+                ->on('builds')
+                ->onDelete('cascade');
 
             $table->unsignedInteger('talent_id');
             $table->foreign('talent_id')
                 ->references('id')
-                ->on('talents');
+                ->on('talents')
+                ->onDelete('cascade');
         });
     }
 

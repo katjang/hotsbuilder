@@ -11,7 +11,7 @@
   --purple: #9561e2;
   --pink: #f66D9b;
   --red: #e3342f;
-  --orange: #f6993f;
+  --orange: #ff5500;
   --yellow: #ffed4a;
   --green: #38c172;
   --teal: #4dc0b5;
@@ -10501,8 +10501,8 @@ textarea {
   height: 100px !important;
 }
 
-.button-icon,
-.button-icon-small {
+.fab-button,
+.fab-button-mini {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -10541,14 +10541,75 @@ textarea {
           box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
-.button-icon-small {
+.fab-button-mini {
   width: 30px;
   height: 30px;
   font-size: 20px;
 }
 
-.favorite {
+.fab-button.favorite,
+.favorite.fab-button-mini {
   background-color: #9561e2;
+}
+
+.fab-button.edit,
+.edit.fab-button-mini {
+  background-color: #ff5500;
+}
+
+.fab-button.delete,
+.delete.fab-button-mini {
+  background-color: #e3342f;
+}
+
+.icon-button {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  background-color: transparent;
+  text-align: center;
+  min-width: 0;
+  padding: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  outline: none;
+  border-width: 0;
+  margin: 0 10px;
+  width: 35px;
+  height: 35px;
+}
+
+.icon-button.favorite {
+  color: #9561e2;
+}
+
+.icon-button.edit {
+  color: #9561e2;
+}
+
+.icon-button.delete {
+  color: #9561e2;
+}
+
+.icon-button:hover {
+  text-decoration: none;
 }
 
 #app {
