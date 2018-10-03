@@ -26,6 +26,7 @@ class BuildsController extends Controller
     function edit(Build $build){
         $hero = $build->hero()->with('abilities')->first();
         $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
+        $build->talents = $build->talents->groupBy('level');
         return view('user.build.edit', compact('hero', 'build'));
     }
 }

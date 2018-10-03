@@ -15,6 +15,9 @@
                     <img src="{{$build->hero->image}}" alt="{{$build->hero->name}}">
                 </div>
                 <div class="flex-fill">
+                    <div class="col-12">
+                        <strong>{{$build->title}}</strong>
+                    </div>
                     <div class="d-flex">
                         @foreach($build->talents as $talent)
                             @include('partials.talent._compact', compact('talent'))

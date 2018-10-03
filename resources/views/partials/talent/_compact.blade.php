@@ -1,4 +1,4 @@
-<div class="talent" data-id="{{$talent->id}}">
+<div class="talent compact" data-id="{{$talent->id}}">
     <div class="content">
         <img src="{{$talent->image}}" alt="{{$talent->name}}">
         <div class="tooltip-description">

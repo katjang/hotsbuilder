@@ -10658,6 +10658,14 @@ textarea {
   display: block;
 }
 
+.talent.compact {
+  height: 56px;
+}
+
+.talent.compact img {
+  max-height: 100%;
+}
+
 .map {
   margin: 10px;
   width: 400px;

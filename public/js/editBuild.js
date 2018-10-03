@@ -2,6 +2,12 @@ $(init);
 
 function init(){
     $('.talent').on('click', selectTalent);
+    $('.talent_select').each(function(i,e){
+        var id = e.value;
+        console.log(id);
+        $(".talent[data-id="+id+"]").addClass('selected');
+    });
+
 }
 
 

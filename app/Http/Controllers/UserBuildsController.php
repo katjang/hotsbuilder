@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Build;
 use App\Hero;
+use App\Http\Requests\SaveBuild;
 use App\Services\BuildService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,36 +22,12 @@ class UserBuildsController extends Controller
         return view('user.builds', compact('builds'));
     }
 
-    function store(Request $request)
+    function store(SaveBuild $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'hero_id' => 'required|integer|exists:heroes,id',
-            'talent_1' => 'required|integer|exists:talents,id',
-            'talent_2' => 'required|integer|exists:talents,id',
-            'talent_3' => 'required|integer|exists:talents,id',
-            'talent_4' => 'required|integer|exists:talents,id',
-            'talent_5' => 'required|integer|exists:talents,id',
-            'talent_6' => 'required|integer|exists:talents,id',
-            'talent_7' => 'required|integer|exists:talents,id',
-        ]);
-
         $build = new Build;
-        $build->fill(array_only($request->all(), ['title', 'description', 'hero_id']));
         $build->hero_id = $request->hero_id;
-
-        Auth::user()->builds()->save($build);
-        $build->talents()->sync([
-            $request->talent_1,
-            $request->talent_2,
-            $request->talent_3,
-            $request->talent_4,
-            $request->talent_5,
-            $request->talent_6,
-            $request->talent_7
-        ]);
-
-        return redirect()->route('user.builds')->with('status', 'Build has been submitted');
+        $this->buildService->saveBuild($request, $build, Auth::user());
+        return redirect()->route('user.builds')->with('status', 'Build has been created');
     }
 
     function delete(Build $build)
@@ -59,8 +36,9 @@ class UserBuildsController extends Controller
         return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }
 
-    function update(Build $build, Request $request)
+    function update(Build $build, SaveBuild $request)
     {
-
+        $this->buildService->saveBuild($request, $build, Auth::user());
+        return redirect()->route('user.builds')->with('status', 'Build has been updated');
     }
 }

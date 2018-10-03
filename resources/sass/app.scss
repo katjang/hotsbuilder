@@ -165,6 +165,13 @@ img{
       display: block;
     }
   }
+
+  &.compact{
+    height: 56px;
+    img{
+      max-height: 100%;
+    }
+  }
 }
 
 .map{

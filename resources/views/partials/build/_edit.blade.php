@@ -1,6 +1,5 @@
-
 @isset($build)
-    {{Form::model($build, ['route' => ['user.build.update', $build]])}}
+    {{Form::model($build, ['route' => ['user.build.update', $build], 'method' => 'PUT'])}}
 @else
     {{Form::open(['url' => route('user.build.store')])}}
 @endisset
@@ -23,7 +22,7 @@
                 </div>
                 <div class="form-group d-flex flex-column">
                     @foreach($talents as $talent)
-                        <div class="talent {{ old('talent_'.$loop->parent->iteration)==$talent->id?'selected':'' }}" data-id="{{$talent->id}}">
+                        <div class="talent" data-id="{{$talent->id}}">
                             <div class="content">
                                 <div class="d-flex">
                                     <h4><img class="d-inline-block" src="{{$talent->image}}" alt="{{$talent->name}}"> {{$talent->name}}</h4>
@@ -36,7 +35,7 @@
                             </div>
                         </div>
                     @endforeach
-                    {{Form::hidden('talent_'.$loop->iteration, null, ['class' => ('form-control '. ($errors->has('talent_'.$loop->iteration)?'is-invalid' : ''))])}}
+                    {{Form::hidden('talent_'.$loop->iteration, isset($build)?$build->talents[$level][0]->id:null, ['class' => ('talent_select form-control '. ($errors->has('talent_'.$loop->iteration)?'is-invalid' : ''))])}}
                     <div class="invalid-feedback">{{ $errors->first('talent_'.$loop->iteration) }}</div>
                 </div>
                 <div class="form-group">
@@ -47,6 +46,6 @@
         @endforeach
     </div>
     <div class="text-right">
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </div>
 {{Form::close()}}
