@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -23,5 +24,14 @@ class UserSeeder extends Seeder
             'email' => 'test@test.com',
             'password' => bcrypt('testtest')
         ]);
+
+
+
+        Admin::create([
+            'email' => 'baws@test.com',
+            'name' => 'Swagger boi',
+            'password' => bcrypt('testtest')
+        ]);
+
     }
 }

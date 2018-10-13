@@ -17,15 +17,16 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+
         switch ($guard) {
-            case 'admin' :
+            case 'admin':
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('admin.home');
+                    return redirect()->route('admin.users');
                 }
                 break;
             default:
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('home');
+                    return redirect('/home');
                 }
                 break;
         }

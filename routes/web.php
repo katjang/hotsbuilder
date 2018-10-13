@@ -41,10 +41,11 @@ Route::group(['middleware' => 'auth'], function()
 
 Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('/login', 'AdminLoginController@form')->name('admin.login.form');
-    Route::post('/login', 'AdminLoginController@login')->name('admin.login');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login.form');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
 
-    Route::group(['middleware' => 'guest:admin'], function(){
-        Route::get('/users', 'UserController@index')->name('admin.users');
+    Route::group(['middleware' => 'auth:admin'], function()
+    {
+        Route::get('/users', 'Admin\UserController@index')->name('admin.users');
     });
 });

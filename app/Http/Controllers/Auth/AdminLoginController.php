@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    public function form()
+    public function showLoginForm()
     {
         return view('auth.login', ['admin' => true]);
     }
@@ -22,9 +22,4 @@ class AdminLoginController extends Controller
     use AuthenticatesUsers;
 
     protected $redirectTo = '/admin/users';
-
-    public function __construct()
-    {
-        $this->middleware('guest:admin')->except('logout');
-    }
 }
