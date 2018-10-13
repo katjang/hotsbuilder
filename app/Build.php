@@ -27,4 +27,15 @@ class Build extends Model
     {
         return $this->belongsToMany(Talent::class);
     }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('build.hero', 'LIKE', "%{$search}%");
+    }
+
+    public function scopePopular($query)
+    {
+        return $query;
+    }
 }
