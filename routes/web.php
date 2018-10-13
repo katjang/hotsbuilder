@@ -38,3 +38,13 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
     Route::delete('/builds/{build}/favorite', 'UserFavoritesController@delete')->name('user.favorite.delete');
 });
+
+Route::group(['prefix' => 'admin'], function()
+{
+    Route::get('/login', 'AdminLoginController@form')->name('admin.login.form');
+    Route::post('/login', 'AdminLoginController@login')->name('admin.login');
+
+    Route::group(['middleware' => 'guest:admin'], function(){
+        Route::get('/users', 'UserController@index')->name('admin.users');
+    });
+});
