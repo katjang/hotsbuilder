@@ -18,25 +18,20 @@ class UserBuildsController extends Controller
 
     function index()
     {
-        //TODO HAVE TO Eager load TALENTS INTO BUILDS
         $builds = $this->buildService->addFavoritesAttribute(Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get());
-        return view('user.builds', compact('builds'));
+        return view('user.build.index', compact('builds'));
     }
 
     function store(SaveBuild $request)
     {
-        //TODO HAVE TO Eager load TALENTS INTO BUILDS
-
         $build = new Build;
         $build->hero_id = $request->hero_id;
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('user.builds')->with('status', 'Build has been created');
+        return redirect()->route('user.build.show', compact('build'))->with('status', 'Build has been created');
     }
 
     function delete(Build $build)
     {
-        //TODO HAVE TO Eager load TALENTS INTO BUILDS
-
         $build->delete();
         return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }
@@ -44,6 +39,14 @@ class UserBuildsController extends Controller
     function update(Build $build, SaveBuild $request)
     {
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('user.builds')->with('status', 'Build has been updated');
+        return redirect()->route('user.build.show', compact('build'))->with('status', 'Build has been updated');
+    }
+
+    function show(Build $build)
+    {
+        $hero = $build->hero()->with('abilities')->first();
+        $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
+        $build->talents = $build->talents->groupBy('level');
+        return view('user.build.show', compact('build', 'hero'));
     }
 }

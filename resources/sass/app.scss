@@ -215,6 +215,10 @@ img{
       max-height: 100%;
     }
   }
+
+  &.static{
+    pointer-events:none;
+  }
 }
 
 .map{

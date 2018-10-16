@@ -10727,6 +10727,10 @@ textarea {
   max-height: 100%;
 }
 
+.talent.static {
+  pointer-events: none;
+}
+
 .map {
   margin: 10px;
   width: 400px;

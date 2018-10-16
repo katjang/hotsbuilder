@@ -3,7 +3,6 @@
         <div class="d-flex justify-content-between col-12">
             <strong>By: <a href="{{route('user.show', $build->user)}}">{{$build->user->name}}</a></strong>
             <div class="d-flex">
-
                 <small>last updated: {{$build->updated_at->format('d/m/y')}}</small>
             </div>
         </div>
@@ -12,6 +11,7 @@
                 <div>
                     <img src="{{$build->hero->image}}" alt="{{$build->hero->name}}">
                 </div>
+                <a href="{{route('user.build.show', ['build' => $build])}}">YES</a>
                 <div class="flex-fill">
                     <div class="col-12">
                         <strong>{{$build->title}}</strong>
@@ -43,6 +43,5 @@
                 @endauth
             </div>
         </div>
-
     </div>
 @endforeach

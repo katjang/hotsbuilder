@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Build extends Model
 {
     protected $guarded = ['user_id', 'hero_id'];
+    protected $with = ['talents'];
 
     function user()
     {
@@ -25,7 +26,12 @@ class Build extends Model
 
     function talents()
     {
-        return $this->belongsToMany(Talent::class);
+        return $this->belongsToMany(Talent::class)->orderBy('level');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function scopeSearch($query, $search)
