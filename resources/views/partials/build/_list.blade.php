@@ -11,8 +11,7 @@
                 <div>
                     <img src="{{$build->hero->image}}" alt="{{$build->hero->name}}">
                 </div>
-                <a href="{{route('user.build.show', ['build' => $build])}}">YES</a>
-                <div class="flex-fill">
+                <a href="{{route('user.build.show', ['build' => $build])}}" class="flex-fill">
                     <div class="col-12">
                         <strong>{{$build->title}}</strong>
                     </div>
@@ -21,7 +20,7 @@
                             @include('partials.talent._compact', compact('talent'))
                         @endforeach
                     </div>
-                </div>
+                </a>
                 @auth
                     <div>
                         @if(isset($build->favorite) && !$build->favorite)

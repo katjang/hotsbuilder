@@ -46,6 +46,6 @@
         @endforeach
     </div>
     <div class="text-right">
-        <button type="submit" class="btn btn-success">Save</button>
+        {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     </div>
 {{Form::close()}}

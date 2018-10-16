@@ -18,9 +18,9 @@ class CreateHeroesTable extends Migration
             $table->string('name');
             $table->string('short_name');
             $table->string('attribute_id');
-            $table->string('role');
-            $table->string('type');
-            $table->date('release_date');
+            $table->string('role')->nullable();
+            $table->string('type')->nullable();
+            $table->date('release_date')->nullable();
             $table->string('image');
             $table->timestamps();
         });
