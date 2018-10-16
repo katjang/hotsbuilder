@@ -13,10 +13,8 @@
 
 Route::get('/', 'PagesController@index');
 
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/heroes', 'HeroesController@index')->name('heroes');
 Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
 
@@ -41,7 +39,7 @@ Route::group(['middleware' => 'auth'], function()
 
 Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login.form');
+    Route::get('/login', 'Auth\AdminLoginController@form')->name('admin.login.form');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
 
     Route::group(['middleware' => 'auth:admin'], function()

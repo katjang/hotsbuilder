@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     function index(){
-        return view('home');
+        return redirect()->route('maps');
     }
 }
