@@ -3,8 +3,9 @@ $(init);
 function init(){
     $('.talent_select').each(function(i,e){
         var id = e.value;
-        console.log(id);
-        $(".talent[data-id="+id+"]").addClass('selected');
+        if(id) {
+            $(".talent[data-id="+id+"]").addClass('selected');
+        }
     });
     $('.talent').on('click', selectTalent);
 }

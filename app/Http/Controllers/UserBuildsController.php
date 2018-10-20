@@ -44,8 +44,11 @@ class UserBuildsController extends Controller
 
     function show(Build $build)
     {
-        $hero = $build->hero()->with('abilities')->first();
-        $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
+        $hero = $build->hero()->with('abilities', 'talents')->first();
+        $hero->talents = $hero->talents->groupBy('level');
+
+        $build->with('comments.user')->get();
+
         $build->talents = $build->talents->groupBy('level');
         return view('user.build.show', compact('build', 'hero'));
     }

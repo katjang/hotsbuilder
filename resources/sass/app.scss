@@ -145,6 +145,7 @@ img{
   -ms-transition: color 0.3s;
   -o-transition: color 0.3s;
   transition: color 0.3s;
+  position: relative;
   &:hover{
     & > div:not(.content){
       color: $dark;
@@ -246,4 +247,13 @@ img{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.comment{
+  @extend .game-border;
+  padding: 1px;
+}
+
+.replies{
+  padding-left: 20px;
 }

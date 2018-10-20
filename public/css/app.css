@@ -10630,20 +10630,23 @@ textarea {
 .hero,
 .build-list,
 .talent,
-.map {
+.map,
+.comment {
   background: -webkit-gradient(linear, left top, left bottom, from(#14324A), to(#43286b));
   background: linear-gradient(#14324A, #43286b);
   padding: 3px;
   position: relative;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+  position: relative;
 }
 
 .game-border:hover > div:not(.content),
 .hero:hover > div:not(.content),
 .build-list:hover > div:not(.content),
 .talent:hover > div:not(.content),
-.map:hover > div:not(.content) {
+.map:hover > div:not(.content),
+.comment:hover > div:not(.content) {
   color: #1A1043;
 }
 
@@ -10651,7 +10654,8 @@ textarea {
 .hero:hover:before,
 .build-list:hover:before,
 .talent:hover:before,
-.map:hover:before {
+.map:hover:before,
+.comment:hover:before {
   opacity: 1;
 }
 
@@ -10659,7 +10663,8 @@ textarea {
 .hero > .content,
 .build-list > .content,
 .talent > .content,
-.map > .content {
+.map > .content,
+.comment > .content {
   background-color: #1A1043;
   height: 100%;
   position: relative;
@@ -10669,7 +10674,8 @@ textarea {
 .selected.hero,
 .selected.build-list,
 .selected.talent,
-.selected.map {
+.selected.map,
+.selected.comment {
   background: -webkit-gradient(linear, left top, left bottom, from(#dfeeff), to(#6BC1F9));
   background: linear-gradient(#dfeeff, #6BC1F9);
 }
@@ -10678,7 +10684,8 @@ textarea {
 .hero:before,
 .build-list:before,
 .talent:before,
-.map:before {
+.map:before,
+.comment:before {
   content: '';
   left: 0;
   right: 0;
@@ -10762,5 +10769,13 @@ textarea {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.comment {
+  padding: 1px;
+}
+
+.replies {
+  padding-left: 20px;
 }
 

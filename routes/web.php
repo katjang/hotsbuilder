@@ -37,8 +37,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
     Route::delete('/builds/{build}/favorite', 'UserFavoritesController@delete')->name('user.favorite.delete');
 
-    Route::post('/builds/{build}/comments', 'CommentsController@store')->name('comment.store');
-    Route::post('/comments/{comment}/replies', 'CommentsController@store')->name('reply.store');
+    Route::post('/builds/{build}/comments', 'CommentsController@comment')->name('comment.store');
+    Route::post('/comments/{comment}/replies', 'CommentsController@reply')->name('reply.store');
 
 });
 

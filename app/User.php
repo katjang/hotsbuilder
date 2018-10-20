@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(Build::class);
     }
 
+    function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     function favorites()
     {
         return $this->belongsToMany(Build::class, 'favorites');
