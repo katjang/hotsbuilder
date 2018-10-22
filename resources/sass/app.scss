@@ -111,16 +111,20 @@ img{
   margin: 0 10px;
   width: 35px;
   height: 35px;
+  color: $purple;
+  i{
+    color: $purple;
+  }
 
-  &.favorite{
-    color: $purple;
-  }
-  &.edit{
-    color: $purple;
-  }
-  &.delete{
-    color: $purple;
-  }
+  //&.favorite{
+  //  color: $purple;
+  //}
+  //&.edit{
+  //  color: $purple;
+  //}
+  //&.delete{
+  //  color: $purple;
+  //}
   &:hover{
     text-decoration: none;
   }
@@ -252,8 +256,9 @@ img{
 .comment{
   @extend .game-border;
   padding: 1px;
+  margin: 3px 0;
 }
 
 .replies{
-  padding-left: 20px;
+  padding-left: 30px;
 }

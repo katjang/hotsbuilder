@@ -28,4 +28,14 @@ class BuildsController extends Controller
         $build->talents = $build->talents->groupBy('level');
         return view('user.build.edit', compact('hero', 'build'));
     }
+
+    function show(Build $build)
+    {
+        $build = Build::where('id', $build->id)->with('comments.comments.comments.comments.comments')->first();
+        $hero = $build->hero;
+        $hero->talents = $hero->talents->groupBy('level');
+
+        $build->talents = $build->talents->groupBy('level');
+        return view('user.build.show', compact('build', 'hero'));
+    }
 }

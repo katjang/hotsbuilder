@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function replies()
+    protected $with = ['user'];
+
+    public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }

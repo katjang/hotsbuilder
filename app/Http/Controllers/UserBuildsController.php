@@ -41,15 +41,4 @@ class UserBuildsController extends Controller
         $this->buildService->saveBuild($request, $build, Auth::user());
         return redirect()->route('user.build.show', compact('build'))->with('status', 'Build has been updated');
     }
-
-    function show(Build $build)
-    {
-        $hero = $build->hero()->with('abilities', 'talents')->first();
-        $hero->talents = $hero->talents->groupBy('level');
-
-        $build->with('comments.user')->get();
-
-        $build->talents = $build->talents->groupBy('level');
-        return view('user.build.show', compact('build', 'hero'));
-    }
 }

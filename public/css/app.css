@@ -10594,17 +10594,10 @@ textarea {
   margin: 0 10px;
   width: 35px;
   height: 35px;
-}
-
-.icon-button.favorite {
   color: #9561e2;
 }
 
-.icon-button.edit {
-  color: #9561e2;
-}
-
-.icon-button.delete {
+.icon-button i {
   color: #9561e2;
 }
 
@@ -10773,9 +10766,10 @@ textarea {
 
 .comment {
   padding: 1px;
+  margin: 3px 0;
 }
 
 .replies {
-  padding-left: 20px;
+  padding-left: 30px;
 }
 

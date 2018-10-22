@@ -20,7 +20,13 @@ Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
 
 Route::get('/users/{user}', 'UserController@show')->name('user.show');
 
+Route::get('/builds/{build}', 'BuildsController@show')->name('build.show');
+
 Route::get('/maps', 'MapsController@index')->name('maps');
+
+Route::get('/comments/{comment}', 'CommentsController@show')->name('comment.show');
+
+
 
 Route::group(['middleware' => 'auth'], function()
 {
@@ -31,7 +37,6 @@ Route::group(['middleware' => 'auth'], function()
     Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update');
     Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');
     Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete');
-    Route::get('/builds/{build}', 'UserBuildsController@show')->name('user.build.show');
 
     Route::get('/favorites', 'UserFavoritesController@index')->name('user.favorites');
     Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
@@ -40,6 +45,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/builds/{build}/comments', 'CommentsController@comment')->name('comment.store');
     Route::post('/comments/{comment}/replies', 'CommentsController@reply')->name('reply.store');
 
+    Route::put('/comments/{comment}', 'CommentsController@remove')->name('comment.remove');
 });
 
 Route::group(['prefix' => 'admin'], function()

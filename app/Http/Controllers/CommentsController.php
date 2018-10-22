@@ -39,8 +39,20 @@ class CommentsController extends Controller
         return redirect()->back();
     }
 
-    function delete()
+    function remove(Comment $comment)
     {
+        $comment->body = null;
+        $comment->save();
 
+        return redirect()->back();
+    }
+
+    function show(Comment $comment)
+    {
+        // for some reason "Comment::where('id', $comment->id)" is neccesairy,
+        // just $comment->with... returns all comments as well as Comment::find($build->id)->with...,
+        // which is kinda odd... (one extra query :( i could change route to commentId, but i want to keep the routes consistant)
+        $comment = Comment::where('id', $comment->id)->with('comments.comments.comments.comments')->get();
+        return view('comment.show', ['comments' => $comment]);
     }
 }
