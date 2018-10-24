@@ -16,7 +16,6 @@ class CommentsController extends Controller
         ]);
 
         $comment = new Comment;
-
         $comment->body = $request->get('body');
         $comment->user()->associate(Auth::user());
         $build->comments()->save($comment);
@@ -31,7 +30,6 @@ class CommentsController extends Controller
         ]);
 
         $nComment = new Comment;
-
         $nComment->body = $request->get('body');
         $nComment->user()->associate(Auth::user());
         $comment->comments()->save($nComment);

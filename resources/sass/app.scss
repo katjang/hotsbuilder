@@ -61,7 +61,6 @@ img{
   flex-shrink: 0;
   outline: none;
   border-radius: 50%;
-  background-color: black;
   color: white;
   border-width: 0;
   margin: 0 10px;
@@ -72,19 +71,12 @@ img{
 
   &-mini{
     @extend .fab-button;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     font-size: 20px;
   }
-  &.favorite{
-    background-color: $purple;
-  }
-  &.edit{
-    background-color: $orange;
-  }
-  &.delete{
-    background-color: $red;
-  }
+  background-color: $purple;
+
 }
 
 .icon-button{

@@ -3,8 +3,33 @@
 @section('content')
     <div class="container">
         @include('partials.hero._detail', compact('hero'))
-        <h2>{{$build->title}}</h2>
-        <p>{{$build->description}}</p>
+        <div class="d-flex">
+            <div class="flex-fill">
+                <h2>{{$build->title}}</h2>
+                <p>{{$build->description}}</p>
+            </div>
+            <div class="d-flex">
+                @auth
+                @if($build->is_favorite)
+                    {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
+                    <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite</i></button>
+                    {{Form::close()}}
+                @else
+                    {{Form::open(['route' => ['user.favorite.store', $build]])}}
+                    <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite_border</i></button>
+                    {{Form::close()}}
+                @endif
+                @can('update', $build)
+                    <a href="{{route('build.edit', $build)}}" class="fab-button-mini edit"><i class="material-icons">edit</i></a>
+                @endcan
+                @can('delete', $build)
+                    {{Form::open(['route' => ['user.build.delete', $build]])}}
+                    <button type="submit" class="fab-button-mini delete"><i class="material-icons">delete</i></button>
+                    {{Form::close()}}
+                @endcan
+                @endauth
+            </div>
+        </div>
         <div class="d-flex flex-wrap">
             @foreach($hero->talents as $level => $talents)
                 <div class="col-12 col-lg-6">

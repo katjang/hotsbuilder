@@ -16,7 +16,7 @@ class BuildSeeder extends Seeder
     {
         for($i = 0; $i < 10; $i++){
             $build = new Build;
-            $build->user_id = 1;
+            $build->user_id = rand(1,3);
 
             $hero = Hero::inRandomOrder()->first();
 

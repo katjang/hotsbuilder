@@ -23,21 +23,25 @@
                 </a>
                 @auth
                     <div>
-                        @if(isset($build->favorite) && !$build->favorite)
-                            {{Form::open(['route' => ['user.favorite.store', $build]])}}
-                                <button type="submit" class="icon-button favorite"><i class="material-icons">favorite_border</i></button>
+                        @auth
+                        @if($build->is_favorite)
+                            {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
+                            <button type="submit" class="icon-button favorite"><i class="material-icons">favorite</i></button>
                             {{Form::close()}}
                         @else
-                            {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
-                                <button type="submit" class="icon-button favorite"><i class="material-icons">favorite</i></button>
+                            {{Form::open(['route' => ['user.favorite.store', $build]])}}
+                            <button type="submit" class="icon-button favorite"><i class="material-icons">favorite_border</i></button>
                             {{Form::close()}}
                         @endif
-                        @if($build->user->id == Auth::id())
+                        @can('update', $build)
                             <a href="{{route('build.edit', compact('build'))}}" class="icon-button edit"><i class="material-icons">edit</i></a>
+                        @endcan
+                        @can('delete', $build)
                             {{Form::open(['route' => ['user.build.delete', $build], 'method' => 'DELETE'])}}
                             <button type="submit" class="icon-button delete"><i class="material-icons">delete</i></button>
                             {{Form::close()}}
-                        @endif
+                        @endcan
+                        @endauth
                     </div>
                 @endauth
             </div>

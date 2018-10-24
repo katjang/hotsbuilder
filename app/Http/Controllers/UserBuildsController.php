@@ -18,7 +18,7 @@ class UserBuildsController extends Controller
 
     function index()
     {
-        $builds = $this->buildService->addFavoritesAttribute(Auth::user()->builds()->orderBy('id', 'desc')->with('hero')->get());
+        $builds = Auth::user()->builds()->with('hero', 'user')->orderBy('id', 'desc')->get();
         return view('user.build.index', compact('builds'));
     }
 

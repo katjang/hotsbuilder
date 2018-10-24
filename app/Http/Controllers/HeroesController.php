@@ -20,7 +20,7 @@ class HeroesController extends Controller
 
     function show(Hero $hero)
     {
-        $builds = $this->buildService->addFavoritesAttribute($hero->builds()->with('hero', 'user')->get());
+        $builds = $hero->builds()->with('hero', 'user')->get();
         return view('hero.show', compact('hero', 'builds'));
     }
 }

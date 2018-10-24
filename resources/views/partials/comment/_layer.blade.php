@@ -29,7 +29,7 @@
                 @endif
             </div>
             <div class="replies">
-                {{Form::open(['route' => ['reply.store', $comment], 'class' => 'd-none reply-form'])}}
+                {{Form::open(['route' => ['reply.store', $comment], 'class' => 'd-none reply-form col-12'])}}
                 <div class="form-group">
                     {{Form::textarea('body', null, ['class' => ('form-control '. ($errors->has('body')?'is-invalid' : ''))])}}
                 </div>

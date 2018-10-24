@@ -10530,7 +10530,6 @@ textarea {
       flex-shrink: 0;
   outline: none;
   border-radius: 50%;
-  background-color: black;
   color: white;
   border-width: 0;
   margin: 0 10px;
@@ -10539,27 +10538,13 @@ textarea {
   font-size: 36px;
   -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-}
-
-.fab-button-mini {
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-}
-
-.fab-button.favorite,
-.favorite.fab-button-mini {
   background-color: #9561e2;
 }
 
-.fab-button.edit,
-.edit.fab-button-mini {
-  background-color: #ff5500;
-}
-
-.fab-button.delete,
-.delete.fab-button-mini {
-  background-color: #e3342f;
+.fab-button-mini {
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
 }
 
 .icon-button {

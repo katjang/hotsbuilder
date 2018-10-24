@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Build extends Model
 {
     protected $guarded = ['user_id', 'hero_id'];
     protected $with = ['talents'];
+    protected $appends = ['is_favorite'];
 
     function user()
     {
@@ -32,6 +34,11 @@ class Build extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function getIsFavoriteAttribute()
+    {
+        return (Auth::check() && in_array($this->id, Auth::user()->favorites->pluck('id')->toArray()));
     }
 
     public function scopeSearch($query, $search)

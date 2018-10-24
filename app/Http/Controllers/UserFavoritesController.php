@@ -11,7 +11,7 @@ class UserFavoritesController extends Controller
     function index()
     {
         //do not need to add the favorite attributes because i know they are all favorite.
-        $builds = Auth::user()->favorites;
+        $builds = Auth::user()->favorites()->with('user', 'hero')->get();
         return view('user.build.index', compact('builds'));
     }
 

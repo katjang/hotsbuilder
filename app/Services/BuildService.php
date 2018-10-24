@@ -1,23 +1,11 @@
 <?php namespace App\Services;
 
 use App\Build;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class BuildService
 {
-    public function addFavoritesAttribute($builds)
-    {
-        if(!Auth::check()){
-            return $builds;
-        }
-        $favorites = Auth::user()->favorites->pluck('id');
-
-        foreach($builds as $build){
-            in_array($build->id, $favorites->toArray()) ? $build->favorite = 1 : $build->favorite = 0;
-        }
-        return $builds;
-    }
-
     public function saveBuild($request, $build, $user)
     {
         $build->fill(array_only($request->all(), ['title', 'description']));

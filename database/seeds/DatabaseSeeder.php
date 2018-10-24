@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
          $this->call(MapSeeder::class);
          $this->call(UserSeeder::class);
          $this->call(BuildSeeder::class);
+         $this->call(CommentSeeder::class);
     }
 }
