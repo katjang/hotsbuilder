@@ -10541,6 +10541,11 @@ textarea {
   background-color: #9561e2;
 }
 
+.fab-button:hover,
+.fab-button-mini:hover {
+  text-decoration: none;
+}
+
 .fab-button-mini {
   width: 36px;
   height: 36px;

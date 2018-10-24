@@ -28,17 +28,20 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-
         $this->createComment(Build::inRandomOrder()->first());
 
         for($i = 0; $i < 50; $i++){
-            if(rand(1,2) == 1){
-                $this->createComment(Build::inRandomOrder()->first());
+            if(rand(1,3) == 1){
+                $on = Comment::inRandomOrder()->first();
+                $this->createComment($on);
+                if(!$on->has_comment){
+                    $on->has_comment = true;
+                    $on->save();
+                }
             }else{
-                $this->createComment(Comment::inRandomOrder()->first());
+                $this->createComment(Build::inRandomOrder()->first());
             }
         }
-
     }
 
     private function createComment($on){

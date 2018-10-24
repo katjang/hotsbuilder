@@ -34,6 +34,11 @@ class CommentsController extends Controller
         $nComment->user()->associate(Auth::user());
         $comment->comments()->save($nComment);
 
+        if(!$comment->has_comment){
+            $comment->has_comment = true;
+            $comment->save();
+        }
+
         return redirect()->back();
     }
 

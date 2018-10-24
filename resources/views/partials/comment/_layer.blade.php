@@ -38,15 +38,14 @@
                 </div>
                 {{Form::close()}}
                 @if(!isset($commentLayer) || $commentLayer < 4)
-                @include('partials.comment._layer', ['comments' => $comment->comments, 'commentLayer' => (!isset($commentLayer)? 1: $commentLayer+=1)])
-                @elseif($comment->comments->count() > 0)
+                    @include('partials.comment._layer', ['comments' => $comment->comments, 'commentLayer' => (!isset($commentLayer)? 1: $commentLayer+1)])
+                @elseif($comment->has_comment)
                     {{--I could safe this query by adding a "has_comment" column in the comment model--}}
                     <div class="col-12">
                         <a href="{{route('comment.show', $comment)}}">Continue this chain</a>
                     </div>
                 @endif
             </div>
-
         </div>
     </div>
 @endforeach
