@@ -27,11 +27,12 @@ class UserBuildsController extends Controller
         $build = new Build;
         $build->hero_id = $request->hero_id;
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('user.build.show', compact('build'))->with('status', 'Build has been created');
+        return redirect()->route('build.show', compact('build'))->with('status', 'Build has been created');
     }
 
     function delete(Build $build)
     {
+        $build->users()->detach();
         $build->delete();
         return redirect()->route('user.builds')->with('status', "Build has been deleted");
     }
@@ -39,6 +40,6 @@ class UserBuildsController extends Controller
     function update(Build $build, SaveBuild $request)
     {
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('user.build.show', compact('build'))->with('status', 'Build has been updated');
+        return redirect()->route('build.show', compact('build'))->with('status', 'Build has been updated');
     }
 }

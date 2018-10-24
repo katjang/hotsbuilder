@@ -49,3 +49,7 @@
         {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     </div>
 {{Form::close()}}
+
+@section('scripts')
+    <script src="{{asset('js/editBuild.js')}}" defer></script>
+@endsection
