@@ -19,12 +19,14 @@
                 <div>
                     @if(Auth::id() == $comment->user->id)
                     {{Form::open(['route' => ['comment.remove', $comment], 'method' => 'PUT'])}}
-                    <button type="submit" class="icon-button delete"><i class="material-icons">delete</i></button>
+                    <button type="submit" class="icon-button-mini delete"><i class="material-icons">delete</i></button>
                     {{Form::close()}}
                     @endif
-                    <button class="icon-button open-reply">
+                    @auth
+                    <button class="icon-button-mini open-reply">
                         <i class="material-icons">reply</i>
                     </button>
+                    @endauth
                 </div>
                 @endif
             </div>

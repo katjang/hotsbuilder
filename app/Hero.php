@@ -22,4 +22,16 @@ class Hero extends Model
     {
         return $this->hasMany(Build::class);
     }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('name', 'LIKE', "%{$search}%");
+    }
+
+    public function scopeFilterRole($query, $roles)
+    {
+        return $query->when($roles, function($query, $roles){
+            return $query->whereIn('role', $roles);
+        });
+    }
 }

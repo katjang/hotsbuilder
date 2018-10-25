@@ -26,19 +26,19 @@
                         @auth
                         @if($build->is_favorite)
                             {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
-                            <button type="submit" class="icon-button favorite"><i class="material-icons">favorite</i></button>
+                            <button type="submit" class="icon-button-mini favorite"><i class="material-icons">favorite</i></button>
                             {{Form::close()}}
                         @else
                             {{Form::open(['route' => ['user.favorite.store', $build]])}}
-                            <button type="submit" class="icon-button favorite"><i class="material-icons">favorite_border</i></button>
+                            <button type="submit" class="icon-button-mini favorite"><i class="material-icons">favorite_border</i></button>
                             {{Form::close()}}
                         @endif
                         @can('update', $build)
-                            <a href="{{route('build.edit', compact('build'))}}" class="icon-button edit"><i class="material-icons">edit</i></a>
+                            <a href="{{route('build.edit', compact('build'))}}" class="icon-button-mini edit"><i class="material-icons">edit</i></a>
                         @endcan
                         @can('delete', $build)
                             {{Form::open(['route' => ['user.build.delete', $build], 'method' => 'DELETE'])}}
-                            <button type="submit" class="icon-button delete"><i class="material-icons">delete</i></button>
+                            <button type="submit" class="icon-button-mini delete"><i class="material-icons">delete</i></button>
                             {{Form::close()}}
                         @endcan
                         @endauth

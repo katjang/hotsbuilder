@@ -10533,8 +10533,8 @@ textarea {
   color: white;
   border-width: 0;
   margin: 0 10px;
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   font-size: 36px;
   -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
@@ -10547,8 +10547,8 @@ textarea {
 }
 
 .fab-button-mini {
-  width: 36px;
-  height: 36px;
+  width: 35px;
+  height: 35px;
   font-size: 20px;
 }
 
@@ -10582,8 +10582,8 @@ textarea {
   outline: none;
   border-width: 0;
   margin: 0 10px;
-  width: 35px;
-  height: 35px;
+  width: 60px;
+  height: 60px;
   color: #9561e2;
 }
 
@@ -10593,6 +10593,11 @@ textarea {
 
 .icon-button:hover {
   text-decoration: none;
+}
+
+.icon-button-mini {
+  width: 35px;
+  height: 35px;
 }
 
 #app {
@@ -10607,6 +10612,10 @@ textarea {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
+}
+
+.hero-detail h3 img {
+  width: 40px;
 }
 
 .game-border,
@@ -10756,7 +10765,7 @@ textarea {
 
 .comment {
   padding: 1px;
-  margin: 3px 0;
+  margin: 5px 0;
 }
 
 .replies {

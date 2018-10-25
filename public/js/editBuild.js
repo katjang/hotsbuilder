@@ -12,7 +12,6 @@ function init(){
 
 
 function selectTalent(e){
-
     var container = $(this).parent();
     $('.talent', container).removeClass('selected');
     $(this).addClass('selected');

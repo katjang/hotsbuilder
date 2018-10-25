@@ -13,8 +13,13 @@ class HeroesController extends Controller
         $this->buildService = $buildService;
     }
 
-    function index(){
-        $heroes = Hero::all();
+    function index(Request $request){
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+
+        $heroes = Hero::search($request->get('search'))
+            ->filterRole($roles)
+            ->get();
+
         return view('hero.index', compact('heroes'));
     }
 
