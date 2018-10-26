@@ -4,6 +4,9 @@ function init(){
     $('.open-reply').on('click', openReply);
     $('.filter-role').on('click', toggleRole);
     $('.filter-form').on('submit', filter);
+    setTimeout(function(){
+        $('.flash-message').removeClass('show');
+    }, 4000);
 }
 function openReply(e) {
     $('.reply-form', $(e.currentTarget).closest('.comment')).first().removeClass('d-none');

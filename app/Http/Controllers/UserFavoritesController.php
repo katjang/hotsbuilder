@@ -18,12 +18,13 @@ class UserFavoritesController extends Controller
     function store(Build $build)
     {
         Auth::user()->favorites()->syncWithoutDetaching($build); //prevents duplicates
-        return redirect()->back()->with(['status' => 'Build has been added to your favorites']);
+
+        return redirect()->back()->with("message", "Build has been added to your favorites");
     }
 
     function delete(Build $build)
     {
         Auth::user()->favorites()->detach($build);
-        return redirect()->back()->with(['status' => 'Build has been removed from your favorites']);
+        return redirect()->back()->with("message", "Build has been removed from your favorites");
     }
 }

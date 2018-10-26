@@ -10775,3 +10775,24 @@ textarea {
   padding-left: 30px;
 }
 
+.flash-message {
+  z-index: 1;
+  position: fixed;
+  max-width: 275px;
+  right: 10px;
+  bottom: 0;
+  margin: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: transform ease-in-out 0.5s;
+  -webkit-transition: -webkit-transform ease-in-out 0.5s;
+  transition: -webkit-transform ease-in-out 0.5s;
+  transition: transform ease-in-out 0.5s;
+  transition: transform ease-in-out 0.5s, -webkit-transform ease-in-out 0.5s;
+}
+
+.flash-message.show {
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+}
+

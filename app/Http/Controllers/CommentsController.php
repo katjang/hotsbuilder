@@ -20,7 +20,7 @@ class CommentsController extends Controller
         $comment->user()->associate(Auth::user());
         $build->comments()->save($comment);
 
-        return redirect()->back();
+        return redirect()->back()->with("message", "Comment has been added.");
     }
 
     function reply(Comment $comment, Request $request)
@@ -39,7 +39,7 @@ class CommentsController extends Controller
             $comment->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with("message", "Comment has been added.");
     }
 
     function remove(Comment $comment)
@@ -47,7 +47,7 @@ class CommentsController extends Controller
         $comment->body = null;
         $comment->save();
 
-        return redirect()->back();
+        return redirect()->back()->with("message", "Comment has been removed.");
     }
 
     function show(Comment $comment)

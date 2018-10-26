@@ -274,3 +274,22 @@ img{
 }
 .filter{
 }
+
+.flash-message {
+  z-index: 1;
+  position: fixed;
+  max-width: 275px;
+  right: 10px;
+  bottom: 0;
+  margin: 0;
+  transform: translateY(100%);
+  -webkit-transition: transform ease-in-out 0.5s;
+  -moz-transition: transform ease-in-out 0.5s;
+  -ms-transition: transform ease-in-out 0.5s;
+  -o-transition: transform ease-in-out 0.5s;
+  transition: transform ease-in-out 0.5s;
+}
+
+.flash-message.show {
+  transform: translateY(-10px);
+}
