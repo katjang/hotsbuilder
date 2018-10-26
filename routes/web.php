@@ -19,8 +19,11 @@ Route::get('/heroes', 'HeroesController@index')->name('heroes');
 Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
 
 Route::get('/users/{user}', 'UserController@show')->name('user.show');
+Route::get('/users/{user}/builds', 'UserBuildsController@index')->name('user.builds');
 
+Route::get('/builds', 'BuildsController@index')->name('builds');
 Route::get('/builds/{build}', 'BuildsController@show')->name('build.show');
+
 
 Route::get('/maps', 'MapsController@index')->name('maps');
 
@@ -33,7 +36,6 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/heroes/{hero}/builds/create', 'BuildsController@create')->name('build.create');
     Route::get('/builds/{build}/edit', "BuildsController@edit")->name('build.edit');
 
-    Route::get('/builds', 'UserBuildsController@index')->name('user.builds');
     Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update')->middleware('can:update,build');
     Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');
     Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete')->middleware('can:delete,build');

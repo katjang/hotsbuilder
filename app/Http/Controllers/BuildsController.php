@@ -15,10 +15,24 @@ class BuildsController extends Controller
         $this->buildService = $buildService;
     }
 
+    function index(Request $request){
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+
+        $builds = Build::when($roles || $request->get('search'), function($query){
+            return $query->join('heroes', 'heroes.id', '=', 'builds.hero_id')
+                ->join('users', 'users.id', '=', 'builds.user_id');
+        })->search($request->get('search'))
+            ->filterRole($roles)
+            ->with('hero', 'user')
+            ->select('builds.*')
+            ->get();
+
+        return view('build.index', compact('builds'));
+    }
+
     function create(Hero $hero)
     {
         $hero->talents = $hero->talents->groupBy('level');
-        $hero->abilities;
         return view('hero.build.create', compact('hero'));
     }
 
@@ -26,7 +40,7 @@ class BuildsController extends Controller
         $hero = $build->hero()->with('abilities')->first();
         $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
         $build->talents = $build->talents->groupBy('level');
-        return view('user.build.edit', compact('hero', 'build'));
+        return view('build.edit', compact('hero', 'build'));
     }
 
     function show(Build $build)
@@ -36,6 +50,6 @@ class BuildsController extends Controller
         $hero->talents = $hero->talents->groupBy('level');
 
         $build->talents = $build->talents->groupBy('level');
-        return view('user.build.show', compact('build', 'hero'));
+        return view('build.show', compact('build', 'hero'));
     }
 }

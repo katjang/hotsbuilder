@@ -23,7 +23,6 @@
                 </a>
                 @auth
                     <div>
-                        @auth
                         @if($build->is_favorite)
                             {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
                             <button type="submit" class="icon-button-mini favorite"><i class="material-icons">favorite</i></button>
@@ -41,7 +40,6 @@
                             <button type="submit" class="icon-button-mini delete"><i class="material-icons">delete</i></button>
                             {{Form::close()}}
                         @endcan
-                        @endauth
                     </div>
                 @endauth
             </div>

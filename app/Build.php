@@ -43,8 +43,18 @@ class Build extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('build.hero', 'LIKE', "%{$search}%");
+        return $query->when($search, function($query, $search){
+            return $query->where('builds.title', 'LIKE', "%{$search}%")
+                ->orWhere('heroes.name', 'LIKE', "%{$search}%")
+                ->orWhere('users.name', 'LIKE', "%{$search}%");
+        });
+    }
+
+    public function scopeFilterRole($query, $roles)
+    {
+        return $query->when($roles, function($query, $roles){
+            return $query->whereIn('heroes.role', $roles);
+        });
     }
 
     public function scopePopular($query)

@@ -38,6 +38,9 @@
                         <li class="nav-item {{Route::currentRouteNamed('heroes')? 'active':''}}">
                             <a class="nav-link" href="{{route('heroes')}}">Heroes</a>
                         </li>
+                        <li class="nav-item {{Route::currentRouteNamed('heroes')? 'active':''}}">
+                            <a class="nav-link" href="{{route('builds')}}">Builds</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,7 +61,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item" href="{{ route('user.builds') }}">My Builds</a>
+                                    <a class="dropdown-item" href="{{ route('user.builds', ['user' => \Auth::user()]) }}">My Builds</a>
                                     <a class="dropdown-item" href="{{ route('user.favorites') }}">Favorites</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -6,6 +6,7 @@ use App\Build;
 use App\Hero;
 use App\Http\Requests\SaveBuild;
 use App\Services\BuildService;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +17,9 @@ class UserBuildsController extends Controller
         $this->buildService = $buildService;
     }
 
-    function index()
+    function index(User $user)
     {
-        $builds = Auth::user()->builds()->with('hero', 'user')->orderBy('id', 'desc')->get();
+        $builds = $user->builds()->with('hero', 'user')->orderBy('id', 'desc')->get();
         return view('user.build.index', compact('builds'));
     }
 
