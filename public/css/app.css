@@ -10552,7 +10552,8 @@ textarea {
   font-size: 20px;
 }
 
-.icon-button {
+.icon-button,
+.icon-button-mini {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -10587,11 +10588,13 @@ textarea {
   color: #9561e2;
 }
 
-.icon-button i {
+.icon-button i,
+.icon-button-mini i {
   color: #9561e2;
 }
 
-.icon-button:hover {
+.icon-button:hover,
+.icon-button-mini:hover {
   text-decoration: none;
 }
 

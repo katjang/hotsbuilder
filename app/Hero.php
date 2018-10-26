@@ -25,7 +25,9 @@ class Hero extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('name', 'LIKE', "%{$search}%");
+        return $query->when($search, function($query, $search){
+            return $query->where('name', 'LIKE', "%{$search}%");
+        });
     }
 
     public function scopeFilterRole($query, $roles)

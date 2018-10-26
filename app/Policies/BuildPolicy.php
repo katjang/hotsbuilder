@@ -12,11 +12,11 @@ class BuildPolicy
 
     public function update(User $user, Build $build)
     {
-        return $user->id === $build->user_id;
+        return $user->id === (int)$build->user_id;
     }
 
     public function delete(User $user, Build $build)
     {
-        return $user->id === $build->user_id;
+        return $user->id === (int)$build->user_id;
     }
 }

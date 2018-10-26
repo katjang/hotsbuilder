@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.filter._default')
-    <div class="d-flex flex-wrap justify-content-between">
+    <div class="d-flex flex-wrap justify-content-around">
         @foreach($heroes as $hero)
             <div class="hero">
                 <div class="content">
