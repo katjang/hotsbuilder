@@ -1,5 +1,5 @@
 <div class="filter">
-    {{Form::open(['url' => \Request::route()->getName(), 'method' => 'GET', 'class' => 'd-flex flex-wrap align-items-center filter-form'])}}
+    {{Form::open(['url' => \Request::url(), 'method' => 'GET', 'class' => 'd-flex flex-wrap align-items-center filter-form'])}}
     <div class="col-12 col-md-6">
         <div class="form-group d-flex justify-content-between">
             <div data-role="assassin" class="icon-button filter-role"><img src="{{asset('img/hero/role/assassin'.(\Request::has('assassin')?'_active':'').'.png')}}"></div>
@@ -17,8 +17,21 @@
     </div>
     <div class="col-12 col-md-6 align-items-center">
         <div class="form-group">
-            {{Form::text('search', \Request::get('search'), ['class' => ('form-control filter-search '. ($errors->has('search')?'is-invalid' : '')), 'placeholder' => 'Search...'])}}
+            {{Form::text('search', \Request::get('search'), ['class' => 'form-control filter-search', 'placeholder' => 'Search...'])}}
         </div>
     </div>
+    @isset($heroArray)
+    <div class="col-12">
+        <div class="form-group row">
+            <div class="col-12 col-md-2">
+                {{Form::label('hero', 'Hero:', ['class' => 'col-form-label'])}}
+            </div>
+
+            <div class="col-12 col-md-10">
+                {{Form::select('hero', $heroArray, \Request::has('hero')? \Request::get('hero'):null, ['class' => 'form-control filter-hero'])}}
+            </div>
+        </div>
+    </div>
+    @endisset
     {{Form::close()}}
 </div>

@@ -38,7 +38,7 @@
                         <li class="nav-item {{Route::currentRouteNamed('heroes')? 'active':''}}">
                             <a class="nav-link" href="{{route('heroes')}}">Heroes</a>
                         </li>
-                        <li class="nav-item {{Route::currentRouteNamed('heroes')? 'active':''}}">
+                        <li class="nav-item {{Route::currentRouteNamed('builds')? 'active':''}}">
                             <a class="nav-link" href="{{route('builds')}}">Builds</a>
                         </li>
                     </ul>

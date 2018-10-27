@@ -57,6 +57,13 @@ class Build extends Model
         });
     }
 
+    public function scopeFilterHero($query, $hero)
+    {
+        return $query->when($hero, function($query, $hero){
+            return $query->where('builds.hero_id', $hero);
+        });
+    }
+
     public function scopePopular($query)
     {
         return $query;

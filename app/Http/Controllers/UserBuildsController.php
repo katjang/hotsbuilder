@@ -17,9 +17,19 @@ class UserBuildsController extends Controller
         $this->buildService = $buildService;
     }
 
-    function index(User $user)
+    function index(User $user, Request $request)
     {
-        $builds = $user->builds()->with('hero', 'user')->orderBy('id', 'desc')->get();
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+
+        $builds = $user->builds()->when($roles || $request->get('search'), function($query){
+            return $query->join('heroes', 'heroes.id', '=', 'builds.hero_id')
+                ->join('users', 'users.id', '=', 'builds.user_id');
+        })->search($request->get('search'))
+            ->filterRole($roles)
+            ->with('hero', 'user')
+            ->select('builds.*')
+            ->get();
+
         return view('user.build.index', compact('builds'));
     }
 

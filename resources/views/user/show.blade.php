@@ -4,7 +4,8 @@
     <div class="container">
         <div>
             @include('partials.user._detail', compact($user))
-            @include('partials.build._list', ['builds' => $user->builds])
+            <h3>Most recently updated builds:</h3>
+            @include('partials.build._list', ['builds' => $builds])
         </div>
     </div>
 @endsection

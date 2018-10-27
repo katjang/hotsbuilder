@@ -3,6 +3,7 @@ $(init);
 function init(){
     $('.open-reply').on('click', openReply);
     $('.filter-role').on('click', toggleRole);
+    $('.filter-hero').on('change', filter);
     $('.filter-form').on('submit', filter);
     setTimeout(function(){
         $('.flash-message').removeClass('show');
@@ -32,7 +33,7 @@ function filter(e){
         }
     });
 
-    $('input:not([type=hidden])', $(e.currentTarget).closest('form')).each(function(i) {
+    $('input:not([type=hidden]), select', $(e.currentTarget).closest('form')).each(function(i) {
         var $input = $(this);
         if ($input.val() == ('' || 0)){
             $input.attr('disabled', 'disabled');
