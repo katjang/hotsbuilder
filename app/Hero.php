@@ -33,6 +33,7 @@ class Hero extends Model
     public function scopeFilterRole($query, $roles)
     {
         return $query->when($roles, function($query, $roles){
+            $roles = array_map('ucwords', $roles);
             return $query->whereIn('role', $roles);
         });
     }
