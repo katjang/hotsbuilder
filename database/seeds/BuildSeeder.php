@@ -2,6 +2,7 @@
 
 use App\Build;
 use App\Hero;
+use App\Map;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +15,7 @@ class BuildSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 50; $i++) {
             $build = new Build;
             $build->user_id = rand(1,3);
 
@@ -32,6 +33,12 @@ class BuildSeeder extends Seeder
 
             foreach($hero->talents as $level => $talents){
                 $build->talents()->attach($talents->random());
+            }
+
+            $maps = Map::inRandomOrder()->limit(rand(1,5))->get();
+
+            foreach($maps as $map){
+                $build->maps()->attach($map);
             }
         }
     }

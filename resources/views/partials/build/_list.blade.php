@@ -15,17 +15,17 @@
                     <div class="col-12">
                         <h5>{{$build->title}}</h5>
                     </div>
-                    <div class="d-flex flex-wrap col-12 justify-content-between">
-                        <div>
+                    <div class="d-flex col-12 justify-content-between flex-wrap">
+                        <div class="push-right">
                             <strong>Talents</strong>
-                            <div class="d-flex">
+                            <div class="d-flex flex-wrap">
                                 @foreach($build->talents as $talent)
                                     @include('partials.talent._compact', $talent)
                                 @endforeach
                             </div>
 
                         </div>
-                        <div class="push-left">
+                        <div>
                             @if(count($build->maps))
                             <strong>Maps</strong>
                             <div class="d-flex">

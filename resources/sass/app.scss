@@ -208,6 +208,11 @@ img{
     font-weight: bold;
     margin: 5px 0;
   }
+  @include media-breakpoint-down(sm) {
+    img{
+      height: 50px;
+    }
+  }
 }
 
 .tooltip-description{
@@ -236,6 +241,9 @@ img{
     height: 56px;
     img{
       max-height: 100%;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 36px;
     }
   }
 
@@ -282,6 +290,9 @@ img{
     width: fit-content;
     img{
       max-height: 100%;
+    }
+    @include media-breakpoint-down(sm) {
+      height: 36px;
     }
   }
 
@@ -344,6 +355,11 @@ img{
 .push-bottom{
   margin-bottom: 15px;
 }
+
 .push-left{
   margin-left: 15px;
+}
+
+.push-right{
+  margin-right: 15px;
 }
