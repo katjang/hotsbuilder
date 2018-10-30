@@ -29,6 +29,8 @@ class SaveBuild extends FormRequest
 
         return [
             'title' => 'required',
+            'maps' => 'sometimes|array',
+            'maps.*' => 'integer|exists:maps,id',
             'hero_id' => 'required|integer|exists:heroes,id',
             'talent_1' => 'required|integer|exists:talents,id|in:'.$talents[0]->pluck('id')->implode(','),
             'talent_2' => 'required|integer|exists:talents,id|in:'.$talents[1]->pluck('id')->implode(','),

@@ -36,6 +36,11 @@ class Build extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function maps()
+    {
+        return $this->belongsToMany(Map::class);
+    }
+
     public function getIsFavoriteAttribute()
     {
         return (Auth::check() && in_array($this->id, Auth::user()->favorites->pluck('id')->toArray()));

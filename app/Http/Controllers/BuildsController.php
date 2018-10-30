@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Build;
 use App\Hero;
+use App\Map;
 use App\Services\BuildService;
 use App\Talent;
 use Illuminate\Http\Request;
@@ -29,20 +30,24 @@ class BuildsController extends Controller
             ->with('hero', 'user')
             ->select('builds.*')
             ->get();
+
         return view('build.index', compact('builds', 'heroArray'));
     }
 
     function create(Hero $hero)
     {
         $hero->talents = $hero->talents->groupBy('level');
-        return view('hero.build.create', compact('hero'));
+        $maps = Map::all();
+        return view('hero.build.create', compact('hero', 'maps'));
     }
 
     function edit(Build $build){
         $hero = $build->hero()->with('abilities')->first();
         $hero->talents = $hero->talents()->orderBy('id')->get()->groupBy('level');
         $build->talents = $build->talents->groupBy('level');
-        return view('build.edit', compact('hero', 'build'));
+        $maps = Map::all();
+
+        return view('build.edit', compact('hero', 'build', 'maps'));
     }
 
     function show(Build $build)

@@ -21,6 +21,6 @@ class BuildService
             $request->talent_6,
             $request->talent_7
         ]);
+        $build->maps()->sync(array_values($request->maps?:[]));
     }
-
 }

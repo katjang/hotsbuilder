@@ -15,7 +15,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 .main{
-  background: url(/img/background.jpg);
+  background: url("../img/background.jpg");
   -webkit-background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -240,6 +240,7 @@ img{
   @extend .game-border;
   margin: 10px;
   width: 400px;
+  cursor: pointer;
   padding: 5px;
   img{
     max-width: 100%;
@@ -248,6 +249,18 @@ img{
   }
   h2{
     color: #6cf;
+  }
+
+  &.compact{
+    height: 100px;
+    width: fit-content;
+    img{
+      max-height: 100%;
+    }
+  }
+
+  &.static{
+    pointer-events:none;
   }
 }
 

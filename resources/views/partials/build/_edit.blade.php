@@ -45,6 +45,21 @@
             </div>
         @endforeach
     </div>
+    <div class="col-12">
+        <h2>Good maps for this build</h2>
+        <div class="d-flex flex-wrap">
+            @foreach($maps as $map)
+                @include('partials.map._compact', $map)
+            @endforeach
+            <div class="selectedMaps">
+                @isset($build)
+                @foreach($build->maps as $map)
+                    {{Form::hidden('maps['.$map->id.']', $map->id)}}
+                @endforeach
+                @endisset
+            </div>
+        </div>
+    </div>
     <div class="text-right">
         {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     </div>

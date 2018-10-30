@@ -55,6 +55,17 @@
                 </div>
             @endforeach
         </div>
+        @if(count($build->maps))
+        <div class="col-12">
+            <h2>Good maps for this build</h2>
+            <div class="d-flex flex-wrap">
+                @foreach($build->maps as $map)
+                    @include('partials.map._compact', $map)
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         @include('partials.comment._comments', ['comments' => $build->comments])
     </div>
 @endsection
