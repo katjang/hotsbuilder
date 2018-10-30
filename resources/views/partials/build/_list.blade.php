@@ -28,7 +28,7 @@
                         <div>
                             @if(count($build->maps))
                             <strong>Maps</strong>
-                            <div class="d-flex">
+                            <div class="d-flex flex-wrap">
                                 @foreach($build->maps as $map)
                                     @include('partials.map._icon', $map)
                                 @endforeach

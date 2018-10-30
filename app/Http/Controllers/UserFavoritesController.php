@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Build;
+use App\Hero;
+use App\Map;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,9 +12,11 @@ class UserFavoritesController extends Controller
 {
     function index(Request $request)
     {
-        //do not need to add the favorite attributes because i know they are all favorite.
+        $heroArray = Hero::selectArray();
+        $mapArray = Map::selectArray();
+
         $builds = Auth::user()->favorites()->filter($request)->with('user', 'hero')->get();
-        return view('user.build.index', compact('builds'));
+        return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 
     function store(Build $build)
