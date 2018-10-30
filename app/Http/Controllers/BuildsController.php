@@ -17,21 +17,15 @@ class BuildsController extends Controller
     }
 
     function index(Request $request){
-        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
-        $heroArray = Hero::orderBy('name')->get()->pluck('name', 'id');
-        $heroArray->prepend('Any', 0);
 
-        $builds = Build::when($roles || $request->get('search'), function($query){
-            return $query->join('heroes', 'heroes.id', '=', 'builds.hero_id')
-                ->join('users', 'users.id', '=', 'builds.user_id');
-        })->search($request->get('search'))
-            ->filterHero($request->get('hero'))
-            ->filterRole($roles)
-            ->with('hero', 'user')
-            ->select('builds.*')
+        $heroArray = Hero::selectArray();
+        $mapArray = Map::selectArray();
+
+        $builds = Build::filter($request)
+            ->with('hero', 'user', 'maps')
             ->get();
 
-        return view('build.index', compact('builds', 'heroArray'));
+        return view('build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 
     function create(Hero $hero)

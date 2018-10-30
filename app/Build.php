@@ -48,7 +48,7 @@ class Build extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->when($search, function($query, $search){
+        return $query->when($search, function ($query, $search) {
             return $query->where('builds.title', 'LIKE', "%{$search}%")
                 ->orWhere('heroes.name', 'LIKE', "%{$search}%")
                 ->orWhere('users.name', 'LIKE', "%{$search}%");
@@ -57,7 +57,7 @@ class Build extends Model
 
     public function scopeFilterRole($query, $roles)
     {
-        return $query->when($roles, function($query, $roles){
+        return $query->when($roles, function ($query, $roles) {
             $roles = array_map('ucwords', $roles);
             return $query->whereIn('heroes.role', $roles);
         });
@@ -65,9 +65,32 @@ class Build extends Model
 
     public function scopeFilterHero($query, $hero)
     {
-        return $query->when($hero, function($query, $hero){
+        return $query->when($hero, function ($query, $hero) {
             return $query->where('builds.hero_id', $hero);
         });
+    }
+
+    public function scopeFilterMap($query, $map)
+    {
+        return $query->when($map, function ($query, $map) {
+            return $query->join('build_map', 'build_map.build_id', '=', 'builds.id')
+                ->where('build_map.map_id', $map);
+        });
+    }
+
+    public function scopeFilter($query, $request)
+    {
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+
+        return $query->when($roles || $request->get('search'), function ($query) {
+            return $query
+                ->join('heroes', 'heroes.id', '=', 'builds.hero_id')
+                ->join('users', 'users.id', '=', 'builds.user_id');
+        })->search($request->get('search'))
+            ->filterRole($roles)
+            ->filterHero($request->get('hero'))
+            ->filterMap($request->get('map'))
+            ->select('builds.*');
     }
 
     public function scopePopular($query)

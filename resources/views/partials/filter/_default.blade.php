@@ -21,14 +21,25 @@
         </div>
     </div>
     @isset($heroArray)
-    <div class="col-12">
+    <div class="col-12 col-md-6">
         <div class="form-group row">
             <div class="col-12 col-md-2">
                 {{Form::label('hero', 'Hero:', ['class' => 'col-form-label'])}}
             </div>
-
             <div class="col-12 col-md-10">
                 {{Form::select('hero', $heroArray, \Request::has('hero')? \Request::get('hero'):null, ['class' => 'form-control filter-hero'])}}
+            </div>
+        </div>
+    </div>
+    @endisset
+    @isset($mapArray)
+    <div class="col-12 col-md-6">
+        <div class="form-group row">
+            <div class="col-12 col-md-2">
+                {{Form::label('map', 'Map:', ['class' => 'col-form-label'])}}
+            </div>
+            <div class="col-12 col-md-10">
+                {{Form::select('map', $mapArray, \Request::has('map')? \Request::get('map'):null, ['class' => 'form-control filter-map'])}}
             </div>
         </div>
     </div>

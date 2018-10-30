@@ -23,4 +23,11 @@ class BuildService
         ]);
         $build->maps()->sync(array_values($request->maps?:[]));
     }
+
+    public function deleteBuild(Build $build)
+    {
+        $build->users()->detach();
+        $build->maps()->detach();
+        $build->delete();
+    }
 }

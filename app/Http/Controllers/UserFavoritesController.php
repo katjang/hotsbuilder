@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserFavoritesController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
         //do not need to add the favorite attributes because i know they are all favorite.
-        $builds = Auth::user()->favorites()->with('user', 'hero')->get();
+        $builds = Auth::user()->favorites()->filter($request)->with('user', 'hero')->get();
         return view('user.build.index', compact('builds'));
     }
 

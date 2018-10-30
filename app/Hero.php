@@ -37,4 +37,19 @@ class Hero extends Model
             return $query->whereIn('role', $roles);
         });
     }
+
+    public function scopeFilter($query, $request)
+    {
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+
+        return $query->search($request->get('search'))->filterRole($roles);
+    }
+
+    static function selectArray()
+    {
+        $heroArray = Hero::orderBy('name')->get()->pluck('name', 'id');
+        $heroArray->prepend('Any', 0);
+
+        return $heroArray;
+    }
 }

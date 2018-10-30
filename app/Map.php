@@ -12,4 +12,12 @@ class Map extends Model
     {
         return $this->belongsToMany(Hero::class);
     }
+
+    static function selectArray()
+    {
+        $mapArray = Map::orderBy('name')->get()->pluck('name', 'id');
+        $mapArray->prepend('Any', 0);
+
+        return $mapArray;
+    }
 }

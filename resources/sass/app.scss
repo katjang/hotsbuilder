@@ -159,13 +159,15 @@ img{
   -ms-transition: color 0.3s;
   -o-transition: color 0.3s;
   transition: color 0.3s;
-  position: relative;
   &:hover{
     & > div:not(.content){
       color: $dark;
     }
     &:before{
       opacity: 1;
+    }
+    a{
+      text-decoration: none;
     }
   }
   & > .content{
@@ -202,22 +204,28 @@ img{
   @extend .game-border;
 
   box-shadow: 0 0 1rem #000;
+  h5{
+    font-weight: bold;
+    margin: 5px 0;
+  }
+}
+
+.tooltip-description{
+  display: none;
+  position: absolute;
+  padding: 5px;
+  background: $dark;
+  top: 120%;
+  left: 0;
+  z-index: 100;
+  width: 200px;
 }
 
 .talent{
   @extend .game-border;
   margin: 3px;
   cursor: pointer;
-  .tooltip-description{
-    display: none;
-    position: absolute;
-    padding: 5px;
-    background: $dark;
-    top: 120%;
-    left: 0;
-    z-index: 100;
-    width: 200px;
-  }
+
   &:hover{
     .tooltip-description{
       display: block;
@@ -250,9 +258,27 @@ img{
   h2{
     color: #6cf;
   }
-
   &.compact{
     height: 100px;
+    width: fit-content;
+    img{
+      max-height: 100%;
+    }
+  }
+
+  &:hover{
+    .tooltip-description{
+      display: block;
+    }
+    a{
+      text-decoration: none;
+    }
+  }
+
+  &.icon{
+    height: 50px;
+    padding: 3px;
+    margin: 3px;
     width: fit-content;
     img{
       max-height: 100%;
@@ -305,4 +331,19 @@ img{
 
 .flash-message.show {
   transform: translateY(-10px);
+}
+
+.push-ends{
+  margin: 15px 0;
+}
+
+.push-top{
+  margin-top: 15px;
+}
+
+.push-bottom{
+  margin-bottom: 15px;
+}
+.push-left{
+  margin-left: 15px;
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Build;
 use App\Hero;
 use App\Http\Requests\SaveBuild;
+use App\Map;
 use App\Services\BuildService;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,18 +20,15 @@ class UserBuildsController extends Controller
 
     function index(User $user, Request $request)
     {
-        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+        $heroArray = Hero::selectArray();
+        $mapArray = Map::selectArray();
 
-        $builds = $user->builds()->when($roles || $request->get('search'), function($query){
-            return $query->join('heroes', 'heroes.id', '=', 'builds.hero_id')
-                ->join('users', 'users.id', '=', 'builds.user_id');
-        })->search($request->get('search'))
-            ->filterRole($roles)
-            ->with('hero', 'user')
-            ->select('builds.*')
+        $builds = $user->builds()
+            ->filter($request)
+            ->with('hero', 'user', 'maps')
             ->get();
 
-        return view('user.build.index', compact('builds'));
+        return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 
     function store(SaveBuild $request)
@@ -43,8 +41,7 @@ class UserBuildsController extends Controller
 
     function delete(Build $build)
     {
-        $build->users()->detach();
-        $build->delete();
+        $this->buildService->deleteBuild($build);
         return redirect()->back()->with("message", "Build has been deleted");
     }
 

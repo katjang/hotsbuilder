@@ -9653,7 +9653,6 @@ textarea {
   position: relative;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
-  position: relative;
 }
 
 .game-border:hover > div:not(.content), .hero:hover > div:not(.content), .build-list:hover > div:not(.content), .talent:hover > div:not(.content), .map:hover > div:not(.content), .comment:hover > div:not(.content) {
@@ -9662,6 +9661,10 @@ textarea {
 
 .game-border:hover:before, .hero:hover:before, .build-list:hover:before, .talent:hover:before, .map:hover:before, .comment:hover:before {
   opacity: 1;
+}
+
+.game-border:hover a, .hero:hover a, .build-list:hover a, .talent:hover a, .map:hover a, .comment:hover a {
+  text-decoration: none;
 }
 
 .game-border > .content, .hero > .content, .build-list > .content, .talent > .content, .map > .content, .comment > .content {
@@ -9696,12 +9699,12 @@ textarea {
           box-shadow: 0 0 1rem #000;
 }
 
-.talent {
-  margin: 3px;
-  cursor: pointer;
+.build-list h5 {
+  font-weight: bold;
+  margin: 5px 0;
 }
 
-.talent .tooltip-description {
+.tooltip-description {
   display: none;
   position: absolute;
   padding: 5px;
@@ -9710,6 +9713,11 @@ textarea {
   left: 0;
   z-index: 100;
   width: 200px;
+}
+
+.talent {
+  margin: 3px;
+  cursor: pointer;
 }
 
 .talent:hover .tooltip-description {
@@ -9731,6 +9739,7 @@ textarea {
 .map {
   margin: 10px;
   width: 400px;
+  cursor: pointer;
   padding: 5px;
 }
 
@@ -9752,6 +9761,27 @@ textarea {
 }
 
 .map.compact img {
+  max-height: 100%;
+}
+
+.map:hover .tooltip-description {
+  display: block;
+}
+
+.map:hover a {
+  text-decoration: none;
+}
+
+.map.icon {
+  height: 50px;
+  padding: 3px;
+  margin: 3px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.map.icon img {
   max-height: 100%;
 }
 
@@ -9804,4 +9834,20 @@ textarea {
 .flash-message.show {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
+}
+
+.push-ends {
+  margin: 15px 0;
+}
+
+.push-top {
+  margin-top: 15px;
+}
+
+.push-bottom {
+  margin-bottom: 15px;
+}
+
+.push-left {
+  margin-left: 15px;
 }

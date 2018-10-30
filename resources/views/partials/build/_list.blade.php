@@ -13,12 +13,28 @@
                 </div>
                 <a href="{{route('build.show', ['build' => $build])}}" class="flex-fill">
                     <div class="col-12">
-                        <strong>{{$build->title}}</strong>
+                        <h5>{{$build->title}}</h5>
                     </div>
-                    <div class="d-flex">
-                        @foreach($build->talents as $talent)
-                            @include('partials.talent._compact', compact('talent'))
-                        @endforeach
+                    <div class="d-flex flex-wrap col-12 justify-content-between">
+                        <div>
+                            <strong>Talents</strong>
+                            <div class="d-flex">
+                                @foreach($build->talents as $talent)
+                                    @include('partials.talent._compact', $talent)
+                                @endforeach
+                            </div>
+
+                        </div>
+                        <div class="push-left">
+                            @if(count($build->maps))
+                            <strong>Maps</strong>
+                            <div class="d-flex">
+                                @foreach($build->maps as $map)
+                                    @include('partials.map._icon', $map)
+                                @endforeach
+                            </div>
+                            @endif
+                        </div>
                     </div>
                 </a>
                 @auth

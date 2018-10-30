@@ -8,17 +8,8 @@ use Illuminate\Http\Request;
 
 class HeroesController extends Controller
 {
-    function __construct(BuildService $buildService)
-    {
-        $this->buildService = $buildService;
-    }
-
     function index(Request $request){
-        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
-
-        $heroes = Hero::search($request->get('search'))
-            ->filterRole($roles)
-            ->get();
+        $heroes = Hero::filter($request)->get();
 
         return view('hero.index', compact('heroes'));
     }

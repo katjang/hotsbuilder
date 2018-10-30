@@ -4,6 +4,7 @@ function init(){
     $('.open-reply').on('click', openReply);
     $('.filter-role').on('click', toggleRole);
     $('.filter-hero').on('change', filter);
+    $('.filter-map').on('change', filter);
     $('.filter-form').on('submit', filter);
     setTimeout(function(){
         $('.flash-message').removeClass('show');
