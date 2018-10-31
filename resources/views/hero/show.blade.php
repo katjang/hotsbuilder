@@ -7,7 +7,7 @@
         </div>
         <div class="d-flex justify-content-between push-ends">
             <a href="{{route('build.create', compact('hero'))}}" class="btn btn-success">Create new build</a>
-            <a href="{{route('builds', ['hero' => $hero->id])}}" class="btn btn-success">See all builds</a>
+            <a href="{{route('builds', ['hero' => $hero->id])}}" class="btn btn-success">All {{$hero->name}} builds</a>
         </div>
         <div>
             <h3>Popular builds:</h3>
