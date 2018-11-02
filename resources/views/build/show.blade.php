@@ -30,7 +30,7 @@
                         <a href="{{route('build.edit', $build)}}" class="fab-button-mini edit"><i class="material-icons">edit</i></a>
                     @endcan
                     @can('delete', $build)
-                        {{Form::open(['route' => ['user.build.delete', $build]])}}
+                        {{Form::open(['route' => ['user.build.delete', Auth::user(), $build]])}}
                         <button type="submit" class="fab-button-mini delete"><i class="material-icons">delete</i></button>
                         {{Form::close()}}
                     @endcan

@@ -33,12 +33,12 @@ Route::get('/comments/{comment}', 'CommentsController@show')->name('comment.show
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/heroes/{hero}/builds/create', 'BuildsController@create')->name('build.create')->middleware('can:create,App\Build');
-    Route::post('/builds', 'UserBuildsController@store')->name('user.build.store')->middleware('can:create,App\Build');
+    Route::post('/users/{user}/builds', 'UserBuildsController@store')->name('user.build.store')->middleware('can:create,App\Build');
 
     Route::get('/builds/{build}/edit', "BuildsController@edit")->name('build.edit')->middleware('can:update,build');
     Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update')->middleware('can:update,build');
 
-    Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete')->middleware('can:delete,build');
+    Route::delete('/users/{user}/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete')->middleware('can:delete,build');
 
     Route::post('builds/{build}/ratings', 'BuildRatingsController@store')->name('build.rating.store')->middleware('can:create,App\Rating');
 

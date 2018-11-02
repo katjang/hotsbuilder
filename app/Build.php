@@ -39,7 +39,7 @@ class Build extends Model
 
     public function ratings()
     {
-        return $this->belongsToMany(User::class, 'ratings');
+        return $this->belongsToMany(User::class, 'ratings')->withPivot('rating');
     }
 
     public function maps()

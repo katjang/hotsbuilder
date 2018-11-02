@@ -7,12 +7,8 @@ function init(){
     $('.filter-map').on('change', filter);
     $('.filter-form').on('submit', filter);
 
-    console.log($('.rating-store .rating-star-container'));
-
     $('.rating-store .rating-star-container').on('mouseenter mouseleave', function(e){
         var index = this.dataset.index;
-        console.log(index);
-        console.log($(this).parent().find(".rating-star-container").slice(0, index));
         $(this).parent().find(".rating-star-container").slice(0, index).find("img:nth-child(2)").toggleClass('d-none');
     });
     $('.rating-store .rating-star-container').click('click', function(e){

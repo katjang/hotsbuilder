@@ -15,6 +15,7 @@ class UserController extends Controller
             ->orderBy('avg_rating', 'desc')
             ->limit(5)
             ->get();
+
         return view('user.show', compact('user', 'builds'));
     }
 }

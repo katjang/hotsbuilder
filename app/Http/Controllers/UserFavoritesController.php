@@ -18,8 +18,9 @@ class UserFavoritesController extends Controller
         $builds = Auth::user()
             ->favorites()
             ->filter($request)
-            ->with('user', 'hero')
+            ->groupBy('favorites.user_id')
             ->withRating()
+            ->with('user', 'hero')
             ->get();
 
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));

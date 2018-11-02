@@ -33,7 +33,7 @@ class UserBuildsController extends Controller
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 
-    function store(SaveBuild $request)
+    function store(User $user, SaveBuild $request)
     {
         $build = new Build;
         $build->hero_id = $request->hero_id;
@@ -41,13 +41,13 @@ class UserBuildsController extends Controller
         return redirect()->route('build.show', compact('build'))->with("message", "Build has been created");
     }
 
-    function delete(Build $build)
+    function delete(User $user, Build $build)
     {
         $this->buildService->deleteBuild($build);
         return redirect()->back()->with("message", "Build has been deleted");
     }
 
-    function update(Build $build, SaveBuild $request)
+    function update(User $user, Build $build, SaveBuild $request)
     {
         $this->buildService->saveBuild($request, $build, Auth::user());
         return redirect()->route('build.show', compact('build'))->with("message", "Build has been updated");

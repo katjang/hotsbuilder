@@ -48,10 +48,14 @@ class BuildsController extends Controller
 
     function show(Build $build)
     {
-        $build = Build::where('id', $build->id)->with('comments.comments.comments.comments.comments')->withRating()->first();
+        $build = Build::where('id', $build->id)
+            ->with('comments.comments.comments.comments.comments')
+            ->withRating()
+            ->first();
+
         $hero = $build->hero;
         $hero->talents = $hero->talents->groupBy('level');
-
+        
         $build->talents = $build->talents->groupBy('level');
         return view('build.show', compact('build', 'hero'));
     }
