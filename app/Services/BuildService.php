@@ -27,6 +27,7 @@ class BuildService
     public function deleteBuild(Build $build)
     {
         $build->users()->detach();
+        $build->ratings()->detach();
         $build->maps()->detach();
         $build->delete();
     }

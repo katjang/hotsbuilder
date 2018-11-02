@@ -9854,7 +9854,7 @@ textarea {
           transform: translateY(-10px);
 }
 
-.rating img {
+.rating.compact img {
   height: 20px;
 }
 

@@ -22,6 +22,7 @@ class BuildsController extends Controller
         $mapArray = Map::selectArray();
 
         $builds = Build::filter($request)
+            ->withRating()
             ->with('hero', 'user', 'maps')
             ->get();
 
@@ -46,7 +47,7 @@ class BuildsController extends Controller
 
     function show(Build $build)
     {
-        $build = Build::where('id', $build->id)->with('comments.comments.comments.comments.comments')->first();
+        $build = Build::where('id', $build->id)->with('comments.comments.comments.comments.comments')->withRating()->first();
         $hero = $build->hero;
         $hero->talents = $hero->talents->groupBy('level');
 

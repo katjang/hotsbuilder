@@ -345,9 +345,12 @@ img{
 }
 
 .rating{
-  img{
-    height: 20px;
+  &.compact{
+    img{
+      height: 20px;
+    }
   }
+
 }
 
 .push-ends{

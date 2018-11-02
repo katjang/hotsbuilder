@@ -4,20 +4,11 @@
             <strong>By: <a href="{{route('user.show', $build->user)}}">{{$build->user->name}}</a></strong>
 
             <div class="d-flex">
-                <div class="rating d-flex push-right">
-                    <?php $rating = 4.78; ?>
-
-                    @for($i = 1; $i < 6; $i++)
-                        <div class="rating-star-container d-flex position-relative">
-                            <img src="{{asset('img/star_empty.png')}}" alt="star">
-                            @if($i < $rating)
-                                <img src="{{asset('img/star.png')}}" alt="star" class="position-absolute">
-                            @elseif($i == ceil($rating))
-                                <img src="{{asset('img/star.png')}}" alt="star" class="position-absolute" style="clip-path: polygon(0 0, {{($rating-floor($rating))*100}}% 0, {{($rating-floor($rating))*100}}% 100%, 0 100%);">
-                            @endif
-                        </div>
-                    @endfor
+                <div class="push-right">
+                    <span>{{$build->rating_count}} votes</span>
                 </div>
+                @include('partials.rating._default', ['rating' => $build->avg_rating, 'extraClass' => 'compact'])
+
                 <small>last updated: {{$build->updated_at->format('d/m/y')}}</small>
             </div>
         </div>

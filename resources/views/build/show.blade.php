@@ -3,30 +3,39 @@
 @section('content')
     <div class="container">
         @include('partials.hero._detail', compact('hero'))
-        <div class="d-flex">
+        <div class="d-flex push-top">
             <div class="flex-fill">
                 <h2>{{$build->title}}</h2>
                 <p>{{$build->description}}</p>
             </div>
             <div class="d-flex">
                 @auth
-                @if($build->is_favorite)
-                    {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
-                    <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite</i></button>
-                    {{Form::close()}}
-                @else
-                    {{Form::open(['route' => ['user.favorite.store', $build]])}}
-                    <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite_border</i></button>
-                    {{Form::close()}}
-                @endif
-                @can('update', $build)
-                    <a href="{{route('build.edit', $build)}}" class="fab-button-mini edit"><i class="material-icons">edit</i></a>
-                @endcan
-                @can('delete', $build)
-                    {{Form::open(['route' => ['user.build.delete', $build]])}}
-                    <button type="submit" class="fab-button-mini delete"><i class="material-icons">delete</i></button>
-                    {{Form::close()}}
-                @endcan
+                <div>
+                    <div class="push-right">
+                        <span>{{$build->rating_count}} votes</span>
+                    </div>
+                    @include('partials.rating._default', ['rating' => $build->avg_rating, 'extraClass' => ''])
+                </div>
+                <div class="d-flex align-items-center">
+                    @if($build->is_favorite)
+                        {{Form::open(['route' => ['user.favorite.delete', $build], 'method' => 'DELETE'])}}
+                        <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite</i></button>
+                        {{Form::close()}}
+                    @else
+                        {{Form::open(['route' => ['user.favorite.store', $build]])}}
+                        <button type="submit" class="fab-button-mini favorite"><i class="material-icons">favorite_border</i></button>
+                        {{Form::close()}}
+                    @endif
+                    @can('update', $build)
+                        <a href="{{route('build.edit', $build)}}" class="fab-button-mini edit"><i class="material-icons">edit</i></a>
+                    @endcan
+                    @can('delete', $build)
+                        {{Form::open(['route' => ['user.build.delete', $build]])}}
+                        <button type="submit" class="fab-button-mini delete"><i class="material-icons">delete</i></button>
+                        {{Form::close()}}
+                    @endcan
+                </div>
+
                 @endauth
             </div>
         </div>
@@ -65,7 +74,15 @@
             </div>
         </div>
         @endif
-
+        @auth
+        <div class="col-12 push-top">
+            {{Form::open(['route' => ['build.rating.store', $build]])}}
+                <h2>Rate this build!</h2>
+                {{Form::hidden('rating', null)}}
+                @include('partials.rating._default', ['rating' => 0, 'extraClass' => 'rating-store'])
+            {{Form::close()}}
+        </div>
+        @endauth
         @include('partials.comment._comments', ['comments' => $build->comments])
     </div>
 @endsection

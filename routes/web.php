@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');
     Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete')->middleware('can:delete,build');
 
+    Route::post('builds/{build}/ratings', 'BuildRatingsController@store')->name('build.rating.store');
+
     Route::get('/favorites', 'UserFavoritesController@index')->name('user.favorites');
     Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
     Route::delete('/builds/{build}/favorite', 'UserFavoritesController@delete')->name('user.favorite.delete');

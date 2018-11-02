@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Build extends Model
 {
@@ -34,6 +35,11 @@ class Build extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function ratings()
+    {
+        return $this->belongsToMany(User::class, 'ratings');
     }
 
     public function maps()
@@ -91,6 +97,14 @@ class Build extends Model
             ->filterHero($request->get('hero'))
             ->filterMap($request->get('map'))
             ->select('builds.*');
+    }
+
+    public function scopeWithRating($query)
+    {
+        return $query->leftJoin('ratings', 'ratings.build_id', '=', 'builds.id')
+            ->groupBy('builds.id')
+            ->select(DB::raw('AVG(ratings.rating) AS avg_rating'),
+                DB::raw('COUNT(ratings.user_id) AS rating_count'), 'builds.*');
     }
 
     public function scopePopular($query)
