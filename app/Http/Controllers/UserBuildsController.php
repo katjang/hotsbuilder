@@ -26,6 +26,8 @@ class UserBuildsController extends Controller
         $builds = $user->builds()
             ->filter($request)
             ->with('hero', 'user', 'maps')
+            ->withRating()
+            ->orderBy('avg_rating', 'desc')
             ->get();
 
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));

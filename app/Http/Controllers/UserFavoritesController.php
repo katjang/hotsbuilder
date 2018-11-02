@@ -15,7 +15,13 @@ class UserFavoritesController extends Controller
         $heroArray = Hero::selectArray();
         $mapArray = Map::selectArray();
 
-        $builds = Auth::user()->favorites()->filter($request)->with('user', 'hero')->get();
+        $builds = Auth::user()
+            ->favorites()
+            ->filter($request)
+            ->with('user', 'hero')
+            ->withRating()
+            ->get();
+
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 

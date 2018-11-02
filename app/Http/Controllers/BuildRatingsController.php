@@ -14,6 +14,6 @@ class BuildRatingsController extends Controller
             'rating' => 'required|integer|min:1|max:5'
         ]);
         $build->ratings()->syncWithoutDetaching([Auth::id() => ['rating' => $request->get('rating')]]);
-        return redirect()->back()->with("message", "Rated the build with a ".$request->get('rating'));
+        return redirect()->back()->with("message", "Rated the build with a ".$request->get('rating').".");
     }
 }

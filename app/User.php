@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Build::class, 'favorites');
     }
+
+    function ratedBuilds()
+    {
+        return $this->belongsToMany(Build::class, 'ratings');
+    }
 }

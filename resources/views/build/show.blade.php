@@ -74,7 +74,7 @@
             </div>
         </div>
         @endif
-        @auth
+        @can('create', 'App\Rating')
         <div class="col-12 push-top">
             {{Form::open(['route' => ['build.rating.store', $build]])}}
                 <h2>Rate this build!</h2>
@@ -82,7 +82,7 @@
                 @include('partials.rating._default', ['rating' => 0, 'extraClass' => 'rating-store'])
             {{Form::close()}}
         </div>
-        @endauth
+        @endcan
         @include('partials.comment._comments', ['comments' => $build->comments])
     </div>
 @endsection

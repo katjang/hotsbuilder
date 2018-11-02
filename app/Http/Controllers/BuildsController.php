@@ -22,8 +22,9 @@ class BuildsController extends Controller
         $mapArray = Map::selectArray();
 
         $builds = Build::filter($request)
-            ->withRating()
             ->with('hero', 'user', 'maps')
+            ->withRating()
+            ->orderBy('avg_rating', 'desc')
             ->get();
 
         return view('build.index', compact('builds', 'heroArray', 'mapArray'));

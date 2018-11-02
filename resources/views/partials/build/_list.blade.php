@@ -7,7 +7,18 @@
                 <div class="push-right">
                     <span>{{$build->rating_count}} votes</span>
                 </div>
-                @include('partials.rating._default', ['rating' => $build->avg_rating, 'extraClass' => 'compact'])
+                <div class="rating d-flex push-right">
+                    @for($i = 1; $i < 6; $i++)
+                        <div class="rating-star-container d-flex position-relative">
+                            <img src="{{asset('img/star_empty.png')}}" alt="star">
+                            @if($i < $build->avg_rating)
+                                <img src="{{asset('img/star.png')}}" alt="star" class="position-absolute">
+                            @elseif($i == ceil($build->avg_rating))
+                                <img src="{{asset('img/star.png')}}" alt="star" class="position-absolute" style="clip-path: polygon(0 0, {{($build->avg_rating-floor($build->avg_rating))*100}}% 0, {{($build->avg_rating-floor($build->avg_rating))*100}}% 100%, 0 100%);">
+                            @endif
+                        </div>
+                    @endfor
+                </div>
 
                 <small>last updated: {{$build->updated_at->format('d/m/y')}}</small>
             </div>

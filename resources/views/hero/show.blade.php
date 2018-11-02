@@ -6,7 +6,13 @@
             @include('partials.hero._detail', compact('hero'))
         </div>
         <div class="d-flex justify-content-between push-ends">
-            <a href="{{route('build.create', compact('hero'))}}" class="btn btn-success">Create new build</a>
+            @can('create', 'App\Build')
+            <a href="{{route('build.create', $hero)}}" class="btn btn-success">Create new build</a>
+                @else
+                <button class="btn btn-info disabled">
+                    Rate 5 builds to create your own!
+                </button>
+            @endcan
             <a href="{{route('builds', ['hero' => $hero->id])}}" class="btn btn-success">All {{$hero->name}} builds</a>
         </div>
         <div>

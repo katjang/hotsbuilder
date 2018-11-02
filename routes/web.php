@@ -11,19 +11,18 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
-
-Route::get('/heroes', 'HeroesController@index')->name('heroes');
-Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
-
-Route::get('/users/{user}', 'UserController@show')->name('user.show');
-Route::get('/users/{user}/builds', 'UserBuildsController@index')->name('user.builds');
 
 Route::get('/builds', 'BuildsController@index')->name('builds');
 Route::get('/builds/{build}', 'BuildsController@show')->name('build.show');
 
+Route::get('/users/{user}', 'UserController@show')->name('user.show');
+Route::get('/users/{user}/builds', 'UserBuildsController@index')->name('user.builds');
+
+Route::get('/heroes', 'HeroesController@index')->name('heroes');
+Route::get('/heroes/{hero}', 'HeroesController@show')->name('hero.show');
 
 Route::get('/maps', 'MapsController@index')->name('maps');
 
@@ -33,14 +32,15 @@ Route::get('/comments/{comment}', 'CommentsController@show')->name('comment.show
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::get('/heroes/{hero}/builds/create', 'BuildsController@create')->name('build.create');
-    Route::get('/builds/{build}/edit', "BuildsController@edit")->name('build.edit');
+    Route::get('/heroes/{hero}/builds/create', 'BuildsController@create')->name('build.create')->middleware('can:create,App\Build');
+    Route::post('/builds', 'UserBuildsController@store')->name('user.build.store')->middleware('can:create,App\Build');
 
+    Route::get('/builds/{build}/edit', "BuildsController@edit")->name('build.edit')->middleware('can:update,build');
     Route::put('/builds/{build}', 'UserBuildsController@update')->name('user.build.update')->middleware('can:update,build');
-    Route::post('/builds', 'UserBuildsController@store')->name('user.build.store');
+
     Route::delete('/builds/{build}', 'UserBuildsController@delete')->name('user.build.delete')->middleware('can:delete,build');
 
-    Route::post('builds/{build}/ratings', 'BuildRatingsController@store')->name('build.rating.store');
+    Route::post('builds/{build}/ratings', 'BuildRatingsController@store')->name('build.rating.store')->middleware('can:create,App\Rating');
 
     Route::get('/favorites', 'UserFavoritesController@index')->name('user.favorites');
     Route::post('/builds/{build}/favorite', 'UserFavoritesController@store')->name('user.favorite.store');
