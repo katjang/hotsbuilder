@@ -47,4 +47,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Build::class, 'ratings')->withPivot('rating');
     }
+
+    function scopeSearch($query, $search)
+    {
+        return $query->when($search, function ($query, $search) {
+            return $query->where('users.name', 'LIKE', "%{$search}%")
+                ->orWhere('users.email', 'LIKE', "%{$search}%");
+        });
+    }
 }

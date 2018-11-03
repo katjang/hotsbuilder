@@ -107,11 +107,6 @@ class Build extends Model
                 DB::raw('COUNT(ratings.user_id) AS rating_count'), 'builds.*');
     }
 
-    public function scopePopular($query)
-    {
-        return $query;
-    }
-
     public static function addFilterParameters($request, $builds)
     {
         $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));

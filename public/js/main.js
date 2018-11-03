@@ -44,7 +44,7 @@ function filter(e){
         }
     });
 
-    $('input:not([type=hidden]), select', $(e.currentTarget).closest('form')).each(function(i) {
+    $('input:not([type=hidden], [type=submit]), select', $(e.currentTarget).closest('form')).each(function(i) {
         var $input = $(this);
         if ($input.val() == ('' || 0)){
             $input.attr('disabled', 'disabled');

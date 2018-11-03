@@ -9840,6 +9840,10 @@ textarea {
   padding-left: 30px;
 }
 
+.filter {
+  color: white;
+}
+
 .flash-message {
   z-index: 1;
   position: fixed;

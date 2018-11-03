@@ -7,6 +7,7 @@ use App\Hero;
 use App\Map;
 use App\Services\BuildService;
 use App\Talent;
+use App\UserRole;
 use Illuminate\Http\Request;
 
 class BuildsController extends Controller

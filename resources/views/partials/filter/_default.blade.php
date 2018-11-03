@@ -16,8 +16,9 @@
         </div>
     </div>
     <div class="col-12 col-md-6 align-items-center">
-        <div class="form-group">
+        <div class="form-group d-flex">
             {{Form::text('search', \Request::get('search'), ['class' => 'form-control filter-search', 'placeholder' => 'Search...'])}}
+            {{Form::submit('search', ['class' => 'btn btn-success'])}}
         </div>
     </div>
     @isset($heroArray)
