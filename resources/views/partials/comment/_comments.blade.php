@@ -1,6 +1,6 @@
-<div class="col-12 push-top">
+<div class="col-12 push-top comments">
     <h2>Comments</h2>
-    <div class="comments">
+    <div>
         @include('partials.comment._layer', $comments)
     </div>
 </div>

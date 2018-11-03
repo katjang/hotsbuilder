@@ -21,12 +21,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   flex: 1;
-
-  color: white;
-
-  a{
-    color: white;
-  }
 }
 
 body{
@@ -71,6 +65,7 @@ img{
 
   &:hover{
     text-decoration: none;
+    color: white;
   }
 
   &-mini{
@@ -142,6 +137,7 @@ img{
   flex-grow: 0;
 
   &-detail{
+    color: white;
     h3{
       img{
         width: 40px;
@@ -151,6 +147,7 @@ img{
 }
 
 .game-border{
+
   background: linear-gradient(#14324A,#43286b);
   padding: 3px;
   position: relative;
@@ -159,6 +156,12 @@ img{
   -ms-transition: color 0.3s;
   -o-transition: color 0.3s;
   transition: color 0.3s;
+
+  color: white;
+  a{
+    color: white;
+  }
+
   &:hover{
     & > div:not(.content){
       color: $dark;
@@ -224,6 +227,7 @@ img{
   left: 0;
   z-index: 100;
   width: 200px;
+  color: white;
 }
 
 .talent{
@@ -302,6 +306,7 @@ img{
 }
 
 .ability{
+  color: white;
   width: 64px;
   height: 64px;
   margin: 5px;
@@ -371,4 +376,8 @@ img{
 
 .push-right{
   margin-right: 15px;
+}
+
+.build, .comments{
+  color: white;
 }

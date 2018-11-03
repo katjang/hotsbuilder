@@ -3,9 +3,10 @@
 @section('content')
     <div class="container">
         <div>
-            @include('partials.hero._detail', compact('hero'))
+            @include('partials.hero._detail', $hero)
         </div>
         <div class="d-flex justify-content-between push-ends">
+            @auth
             @can('create', 'App\Build')
             <a href="{{route('build.create', $hero)}}" class="btn btn-success">Create new build</a>
                 @else
@@ -13,6 +14,7 @@
                     Rate 5 builds to create your own!
                 </button>
             @endcan
+            @endauth
             <a href="{{route('builds', ['hero' => $hero->id])}}" class="btn btn-success">All {{$hero->name}} builds</a>
         </div>
         <div>

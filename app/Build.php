@@ -111,4 +111,11 @@ class Build extends Model
     {
         return $query;
     }
+
+    public static function addFilterParameters($request, $builds)
+    {
+        $roles = array_keys($request->only('assassin', 'specialist', 'warrior', 'support'));
+        $builds->appends(request()->except('page'));
+        if(count($roles)) $builds->withPath($request->url().'?'.implode('&', $roles));
+    }
 }

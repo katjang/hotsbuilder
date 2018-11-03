@@ -21,7 +21,9 @@ class UserFavoritesController extends Controller
             ->groupBy('favorites.user_id')
             ->withRating()
             ->with('user', 'hero')
-            ->get();
+            ->paginate(20);
+
+        Build::addFilterParameters($request, $builds);
 
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }

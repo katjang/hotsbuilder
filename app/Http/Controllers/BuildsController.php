@@ -25,7 +25,9 @@ class BuildsController extends Controller
             ->with('hero', 'user', 'maps')
             ->withRating()
             ->orderBy('avg_rating', 'desc')
-            ->get();
+            ->paginate(20);
+
+        Build::addFilterParameters($request, $builds);
 
         return view('build.index', compact('builds', 'heroArray', 'mapArray'));
     }
@@ -55,7 +57,7 @@ class BuildsController extends Controller
 
         $hero = $build->hero;
         $hero->talents = $hero->talents->groupBy('level');
-        
+
         $build->talents = $build->talents->groupBy('level');
         return view('build.show', compact('build', 'hero'));
     }

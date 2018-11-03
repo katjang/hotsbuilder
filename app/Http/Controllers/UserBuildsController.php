@@ -28,7 +28,9 @@ class UserBuildsController extends Controller
             ->with('hero', 'user', 'maps')
             ->withRating()
             ->orderBy('avg_rating', 'desc')
-            ->get();
+            ->paginate(20);
+
+        Build::addFilterParameters($request, $builds);
 
         return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
     }
@@ -38,7 +40,7 @@ class UserBuildsController extends Controller
         $build = new Build;
         $build->hero_id = $request->hero_id;
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('build.show', compact('build'))->with("message", "Build has been created");
+        return redirect()->route('build.show', $build)->with("message", "Build has been created");
     }
 
     function delete(User $user, Build $build)
@@ -50,6 +52,6 @@ class UserBuildsController extends Controller
     function update(User $user, Build $build, SaveBuild $request)
     {
         $this->buildService->saveBuild($request, $build, Auth::user());
-        return redirect()->route('build.show', compact('build'))->with("message", "Build has been updated");
+        return redirect()->route('build.show', $build)->with("message", "Build has been updated");
     }
 }
