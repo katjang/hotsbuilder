@@ -25,7 +25,8 @@ function selectTalent(e){
 }
 
 function toggleMap(e){
-
+    e.stopPropagation();
+    e.preventDefault();
     $(this).toggleClass('selected');
 
     if($(this).hasClass('selected')){

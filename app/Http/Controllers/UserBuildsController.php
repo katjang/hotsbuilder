@@ -46,7 +46,7 @@ class UserBuildsController extends Controller
     function delete(User $user, Build $build)
     {
         $this->buildService->deleteBuild($build);
-        return redirect()->back()->with("message", "Build has been deleted");
+        return redirect()->route('user.builds', Auth::user())->with("message", "Build has been deleted");
     }
 
     function update(User $user, Build $build, SaveBuild $request)

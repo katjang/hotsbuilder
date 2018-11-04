@@ -26,6 +26,8 @@ class CreateBuildTalentTable extends Migration
                 ->references('id')
                 ->on('talents')
                 ->onDelete('cascade');
+
+            $table->text('note')->nullable();
         });
     }
 

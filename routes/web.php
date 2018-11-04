@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/builds/{build}/comments', 'CommentsController@comment')->name('comment.store');
     Route::post('/comments/{comment}/replies', 'CommentsController@reply')->name('reply.store');
 
-    Route::put('/comments/{comment}', 'CommentsController@remove')->name('comment.remove')->middleware('can:update,comment');
+    Route::put('/comments/{comment}', 'CommentsController@remove')->name('comment.remove')->middleware('can:remove,comment');
 });
 
 Route::group(['prefix' => 'admin'], function()

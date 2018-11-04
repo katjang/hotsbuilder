@@ -31,7 +31,7 @@
                             <a href="{{route('build.edit', $build)}}" class="fab-button-mini edit"><i class="material-icons">edit</i></a>
                         @endcan
                         @can('delete', $build)
-                            {{Form::open(['route' => ['user.build.delete', Auth::user(), $build]])}}
+                            {{Form::open(['route' => ['user.build.delete', Auth::user(), $build], 'method' => 'DELETE'])}}
                             <button type="submit" class="fab-button-mini delete"><i class="material-icons">delete</i></button>
                             {{Form::close()}}
                         @endcan
@@ -60,6 +60,11 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                        <div>
+                            <p>
+                                {{$build->talents[$level][0]->pivot->note}}
+                            </p>
                         </div>
                     </div>
                 @endforeach

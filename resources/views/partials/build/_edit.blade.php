@@ -41,7 +41,8 @@
                     </div>
                     <div class="form-group">
                         {{Form::label('note_'.$loop->iteration, 'Note')}}
-                        {{Form::textarea('note_'.$loop->iteration, null, ['class' => 'form-control'])}}
+                        {{Form::textarea('note_'.$loop->iteration, isset($build)?$build->talents[$level][0]->pivot->note:null, ['class' => 'form-control'])}}
+                        <div class="invalid-feedback">{{ $errors->first('note_'.$loop->iteration) }}</div>
                     </div>
                 </div>
             @endforeach
@@ -58,6 +59,12 @@
                         {{Form::hidden('maps['.$map->id.']', $map->id)}}
                     @endforeach
                     @endisset
+
+                    @if(old('maps'))
+                    @foreach(old('maps') as $map)
+                        {{Form::hidden('maps['.$map.']', $map)}}
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>

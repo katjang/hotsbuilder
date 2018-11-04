@@ -29,7 +29,7 @@ class Build extends Model
 
     function talents()
     {
-        return $this->belongsToMany(Talent::class)->orderBy('level');
+        return $this->belongsToMany(Talent::class)->withPivot('note')->orderBy('level');
     }
 
     public function comments()
