@@ -21,7 +21,7 @@ class UserFavoritesController extends Controller
             ->groupBy('favorites.user_id')
             ->withRating()
             ->with('user', 'hero')
-            ->paginate(10);
+            ->paginate(20);
 
         Build::addFilterParameters($request, $builds);
 
