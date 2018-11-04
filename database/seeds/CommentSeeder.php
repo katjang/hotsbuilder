@@ -30,7 +30,7 @@ class CommentSeeder extends Seeder
     {
         $this->createComment(Build::inRandomOrder()->first());
 
-        for($i = 0; $i < 100; $i++){
+        for($i = 0; $i < 1000; $i++){
             if(rand(1,3) == 1){
                 $on = Comment::inRandomOrder()->first();
                 $this->createComment($on);
