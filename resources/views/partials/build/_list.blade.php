@@ -1,7 +1,7 @@
 @foreach($builds as $build)
     <div class="build-list">
         <div class="d-flex justify-content-between col-12">
-            <strong>By: <a href="{{route('user.show', $build->user)}}">{{$build->user->name}}</a></strong>
+            @include('partials.user._label', ['user' => $build->user])
 
             <div class="d-flex">
                 <div class="push-right">

@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Build;
 use App\User;
+use App\UserRole;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BuildPolicy
@@ -12,7 +13,7 @@ class BuildPolicy
 
     public function create(User $user)
     {
-        return $user->ratedBuilds->count() >= 5;
+        return $user->ratedBuilds->count() >= 5 || $user->role == UserRole::MODERATOR;
     }
 
     public function update(User $user, Build $build)

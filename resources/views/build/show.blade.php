@@ -77,7 +77,7 @@
         </div>
         @auth
         @can('create', 'App\Rating')
-        <div class="col-12 push-top">
+        <div class="col-12 push-top text-white">
             {{Form::open(['route' => ['build.rating.store', $build]])}}
                 <h2>Rate this build!</h2>
                 {{Form::hidden('rating', null)}}

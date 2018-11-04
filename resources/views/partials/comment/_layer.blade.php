@@ -1,7 +1,7 @@
 @foreach($comments as $comment)
     <div class="comment">
         <div class="d-flex justify-content-between col-12">
-            <strong>By: <a href="{{route('user.show', $comment->user)}}">{{$comment->user->name}}</a></strong>
+            @include('partials.user._label', ['user' => $comment->user])
             <div class="d-flex">
                 <small>{{$comment->updated_at->format('d/m/y H:i')}}</small>
             </div>
@@ -17,12 +17,12 @@
                 </div>
                 @if($comment->body != null)
                 <div>
-                    @if(Auth::id() == $comment->user->id)
-                    {{Form::open(['route' => ['comment.remove', $comment], 'method' => 'PUT'])}}
-                    <button type="submit" class="icon-button-mini delete"><i class="material-icons">delete</i></button>
-                    {{Form::close()}}
-                    @endif
                     @auth
+                    @can('remove', $comment)
+                        {{Form::open(['route' => ['comment.remove', $comment], 'method' => 'PUT'])}}
+                        <button type="submit" class="icon-button-mini delete"><i class="material-icons">delete</i></button>
+                        {{Form::close()}}
+                    @endcan
                     <button class="icon-button-mini open-reply">
                         <i class="material-icons">reply</i>
                     </button>

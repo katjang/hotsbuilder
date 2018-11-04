@@ -9892,3 +9892,11 @@ textarea {
 .build, .comments {
   color: white;
 }
+
+.white-text {
+  color: white;
+}
+
+.moderator-icon {
+  height: 23px;
+}
