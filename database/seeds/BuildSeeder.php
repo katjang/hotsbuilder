@@ -15,9 +15,9 @@ class BuildSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i < 50; $i++) {
+        for($i = 0; $i < 150; $i++) {
             $build = new Build;
-            $build->user_id = rand(1,3);
+            $build->user_id = rand(2,8);
 
             //this list dont have missing images...
             $hero = Hero::whereIn('id', [1,3,4,6,9,11,13,14,16,17,18,21,22,23,24,25,27,29,32,34,37,39,41,42,43,44,46,47,48,50,51,52,53,54,56,58,60,63,64,65,66,67,68])->inRandomOrder()->first();

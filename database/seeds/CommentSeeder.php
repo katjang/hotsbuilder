@@ -47,7 +47,7 @@ class CommentSeeder extends Seeder
     private function createComment($on){
         $comment = new Comment;
         $comment->body = $this->someComments[rand(0, count($this->someComments)-1)];
-        $comment->user_id = rand(1,3);
+        $comment->user_id = rand(1, 8);
         $on->comments()->save($comment);
     }
 }
