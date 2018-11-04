@@ -32,7 +32,7 @@ class UserBuildsController extends Controller
 
         Build::addFilterParameters($request, $builds);
 
-        return view('user.build.index', compact('builds', 'heroArray', 'mapArray'));
+        return view('build.index', compact('builds', 'heroArray', 'mapArray'));
     }
 
     function store(User $user, SaveBuild $request)

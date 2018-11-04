@@ -228,8 +228,9 @@ img{
   top: 120%;
   left: 0;
   z-index: 100;
-  width: 200px;
+  max-width: 300px;
   color: white;
+  width: max-content;
 }
 
 .talent{
@@ -391,4 +392,7 @@ img{
 
 .moderator-icon{
   height: 23px;
+}
+.builds{
+  margin-bottom: 150px;
 }
