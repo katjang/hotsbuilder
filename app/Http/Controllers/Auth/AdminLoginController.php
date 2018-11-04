@@ -11,7 +11,7 @@ class AdminLoginController extends Controller
 {
     public function form()
     {
-        return view('auth.login', ['admin' => true]);
+        return view('auth.admin.login');
     }
 
     protected function guard()

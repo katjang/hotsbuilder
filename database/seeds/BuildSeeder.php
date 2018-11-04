@@ -19,7 +19,8 @@ class BuildSeeder extends Seeder
             $build = new Build;
             $build->user_id = rand(1,3);
 
-            $hero = Hero::whereIn('id', [1,3,4,6,9,11,13,14,16,17,18,21,22,23,24,25,27,29,32,34,37, 39, 41, 42, 43, 44, 46, 47, 48, 50, 51, 52, 53, 54, 56, 58, 60, 63, 64, 65, 66, 67, 68])->inRandomOrder()->first();
+            //this list dont have missing images...
+            $hero = Hero::whereIn('id', [1,3,4,6,9,11,13,14,16,17,18,21,22,23,24,25,27,29,32,34,37,39,41,42,43,44,46,47,48,50,51,52,53,54,56,58,60,63,64,65,66,67,68])->inRandomOrder()->first();
 
             $build->fill([
                 'title' => 'First builds of the application!',

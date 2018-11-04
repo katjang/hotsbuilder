@@ -79,11 +79,7 @@
                 </div>
             </div>
         </nav>
-        @if(session('message'))
-        <div class="flash-message alert alert-success show">
-            {{session('message')}}
-        </div>
-        @endif
+        @include('partials.flash._default')
         <main class="py-4 main">
             @yield('content')
         </main>
