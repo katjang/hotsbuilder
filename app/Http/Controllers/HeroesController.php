@@ -19,6 +19,8 @@ class HeroesController extends Controller
         $builds = $hero->builds()
             ->with('hero', 'user')
             ->withRating()
+            ->orderBy('avg_rating', 'desc')
+            ->limit(5)
             ->get();
 
         return view('hero.show', compact('hero', 'builds'));
