@@ -212,8 +212,10 @@ img{
     margin: 5px 0;
   }
   @include media-breakpoint-down(sm) {
-    img{
-      height: 50px;
+    .content{
+      img{
+        height: 50px;
+      }
     }
   }
 }

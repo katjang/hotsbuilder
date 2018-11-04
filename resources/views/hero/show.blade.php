@@ -17,7 +17,7 @@
             @endauth
             <a href="{{route('builds', ['hero' => $hero->id])}}" class="btn btn-success">All {{$hero->name}} builds</a>
         </div>
-        <div>
+        <div class="white-text">
             <h3>Popular builds:</h3>
             <div>
                 @include('partials.build._list', ['builds' => $builds])

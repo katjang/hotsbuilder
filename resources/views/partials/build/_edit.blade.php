@@ -1,7 +1,7 @@
 @isset($build)
     {{Form::model($build, ['route' => ['user.build.update', $build], 'method' => 'PUT'])}}
 @else
-    {{Form::open(['url' => route('user.build.store')])}}
+    {{Form::open(['url' => route('user.build.store', \Auth::user())])}}
 @endisset
     <div class="build">
         {{Form::hidden('hero_id', $hero->id)}}

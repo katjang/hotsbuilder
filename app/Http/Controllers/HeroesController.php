@@ -16,7 +16,11 @@ class HeroesController extends Controller
 
     function show(Hero $hero)
     {
-        $builds = $hero->builds()->with('hero', 'user')->get();
+        $builds = $hero->builds()
+            ->with('hero', 'user')
+            ->withRating()
+            ->get();
+
         return view('hero.show', compact('hero', 'builds'));
     }
 }

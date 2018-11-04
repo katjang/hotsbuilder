@@ -9710,7 +9710,7 @@ textarea {
 }
 
 @media (max-width: 767.98px) {
-  .build-list img {
+  .build-list .content img {
     height: 50px;
   }
 }
