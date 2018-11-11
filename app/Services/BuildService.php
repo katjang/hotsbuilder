@@ -9,7 +9,6 @@ class BuildService
     public function saveBuild($request, $build, $user)
     {
         $build->fill(array_only($request->all(), ['title', 'description']));
-        $build->hero_id = $request->hero_id;
 
         $user->builds()->save($build);
         $build->talents()->sync([
